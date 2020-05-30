@@ -1,0 +1,27 @@
+{
+  "name": "mobitek",
+  "version": "1.0.0",
+  "description": "Mobitek.az on Nuxt.js",
+  "author": "mono",
+  "private": true,
+  "engines": {
+    "node": "13.12.x"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.11.1",
+    "swiper": "^5.3.8",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-click-outside": "^1.1.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}

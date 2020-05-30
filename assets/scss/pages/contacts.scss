@@ -1,0 +1,53 @@
+.contacts-page {
+	padding: 0 90px 200px 90px;
+
+	&__content {
+		background: white;
+		padding: 0 50px 60px 50px ;
+	}
+
+	&__quadro {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__locations {
+		h2 {
+			font-weight: normal;
+			font-size: 38px;
+			line-height: 63px;
+			text-align: center;
+			color: #000000;
+			margin-bottom: 30px;
+		}
+	}
+
+	&__card-big {
+		margin: 0 auto;
+		margin-bottom: 115px;
+		width: 77%;
+
+		.store-card {
+			&__top {
+				.bg {
+					height: 155px;
+				}
+
+				.logo {
+					width: 34px;
+					height: 52px;
+					left: 26px;
+				}
+				.title {
+					font-size: 50px;
+					line-height: 83px;
+					font-weight: normal;
+				}
+			}
+
+			&__bottom {
+				padding-top: 134px;
+			}
+		}
+	}
+}

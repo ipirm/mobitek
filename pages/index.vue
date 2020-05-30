@@ -1,10 +1,10 @@
 <template>
   <div class="index-page">
-    <Welcome :data="welcomePics" />
+    <Welcome :data="slides" />
     <ProductShowcase />
     <ProductSlider :data="products" />
-    <Banners />
-    <VideoSlider />
+    <Banners :data="banners" />
+    <VideoSlider :data="videos" />
     <BottomFeatures />
   </div>
 </template>
@@ -17,6 +17,8 @@ import Banners from '~/components/pages/index/Banners';
 import VideoSlider from '~/components/pages/index/VideoSlider';
 import BottomFeatures from '~/components/pages/index/BottomFeatures';
 
+import {mapState} from 'vuex'
+
 export default {
   components: {
     Welcome,
@@ -26,7 +28,11 @@ export default {
     VideoSlider,
     BottomFeatures
   },
-
+  async fetch({store}) {
+    await store.dispatch('mains/getSlides');
+    await store.dispatch('mains/getBanners');
+    await store.dispatch('mains/getVideos');
+  },
   data() {
     return {
       welcomePics: [
@@ -176,6 +182,9 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapState('mains', ['slides','banners','videos']),
   }
 }
 </script>

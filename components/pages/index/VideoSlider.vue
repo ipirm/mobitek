@@ -9,14 +9,14 @@
 		<div class="index-page__video-slider__content container">
 			<div v-swiper:mySwiper="swiperOption">
 	  		<div class="swiper-wrapper">
-	  			<div class="swiper-slide" v-for="(video, i) in videos" :key="i">
+	  			<div class="swiper-slide" v-for="(video, i) in data.data" :key="i">
 	  				<div class="index-page__video-slider__item">
 		  				<div class="overlay" @click="onClick(i)" :id="`overlay-${i}`">
 		  					<button class="play">
 		  						<img src="/pics/img/index/play.png" alt="Play">
 		  					</button>
 		  				</div>
-		  				<iframe :src="`https://www.youtube.com/embed/${video}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen :id="`iframe-${i}`"></iframe>
+		  				<iframe :src="`https://www.youtube.com/embed/${video.text[$i18n.locale]}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen :id="`iframe-${i}`"></iframe>
 		  			</div>
 	  			</div>
 	  		</div>
@@ -27,6 +27,7 @@
 
 <script>
 export default {
+	props: ['data'],
 	data() {
 		return {
 			videos: [

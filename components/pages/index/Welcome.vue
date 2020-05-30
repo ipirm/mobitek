@@ -3,13 +3,13 @@
 		<div v-swiper:mySwiper="swiperOption" class="index-page__welcome__bg">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="(item, i) in data" :key="i">
-  					<img :src="item.pic" :alt="item.title">
+  					<img :src="`${$imagesUrl}${item.image}`" :alt="item.title[$i18n.locale]">
 				</div>
 			</div>
 		</div>
   		<div class="index-page__welcome__bottom">
   			<div class="index-page__welcome__bottom__item" v-for="(item, i) in data" :key="i" :class="{ active: activeIndex == i }" @click="mySwiper.slideTo(i)">
-  				<span>{{ item.title }}</span>
+  				<span>{{ item.title[$i18n.locale] }}</span>
   			</div>
   		</div>
   	</div>
@@ -34,7 +34,7 @@ export default {
 		this.mySwiper.on('slideChange', () => {
             this.activeIndex = this.mySwiper.activeIndex;
         });
-
+        console.log(this.$i18n.locale)
 		this.mySwiper.init();
 	}
 }

@@ -7,4 +7,6 @@ eventBus.install = function (Vue) {
 	Vue.prototype.$bus = new Vue();
 }
 
+Vue.prototype.$imagesUrl = process.env.imagesUrl;
+
 Vue.use(eventBus);

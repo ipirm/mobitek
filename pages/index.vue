@@ -1,10 +1,10 @@
 <template>
   <div class="index-page">
-    <Welcome :data="welcomePics" />
+    <Welcome :data="slides" />
     <ProductShowcase />
     <ProductSlider :data="products" />
-    <Banners />
-    <VideoSlider />
+    <Banners :data="banners" />
+    <VideoSlider :data="videos" />
     <BottomFeatures />
   </div>
 </template>
@@ -27,23 +27,18 @@ export default {
     BottomFeatures
   },
 
+  async fetch({store}) {
+    await store.dispatch('mains/getSlides');
+    await store.dispatch('mains/getBanners');
+    await store.dispatch('mains/getVideos');
+  },
+  
+  computed: {
+    ...mapState('mains', ['slides','banners','videos']),
+  }
+
   data() {
     return {
-      welcomePics: [
-        {
-          pic: 'pics/img/index/bg.png',
-          title: 'Charge Everything Faster'
-        },
-        {
-          pic: 'pics/img/index/bg.png',
-          title: 'Stay Smart at Home'
-        },
-        {
-          pic: 'pics/img/index/bg.png',
-          title: 'Charge While You Call'
-        }
-      ],
-
       products: [
         {
           title: 'Best Sellers',

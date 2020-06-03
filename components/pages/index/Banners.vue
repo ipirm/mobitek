@@ -5,7 +5,7 @@
                  :key="item.id">
                 <div class="flip-card__inner">
                     <div class="flip-card__front">
-                        <img :src="`${$imagesUrl}${item.image[$i18n.locale]}`" :alt="item.title[$i18n.locale]">
+                        <img :src="`${$imagesUrl}/${item.image[$i18n.locale]}`" :alt="item.title[$i18n.locale]">
                     </div>
                     <div class="flip-card__back f-white b-dark">
                         <h2>{{ item.title[$i18n.locale] }}</h2>

@@ -3,7 +3,7 @@
 		<div v-swiper:mySwiper="swiperOption" class="index-page__welcome__bg">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="(item, i) in data" :key="i">
-  					<img :src="`${$imagesUrl}${item.image}`" :alt="item.title[$i18n.locale]">
+  					<img :src="`${$imagesUrl}/${item.image}`" :alt="item.title[$i18n.locale]">
 				</div>
 			</div>
 		</div>

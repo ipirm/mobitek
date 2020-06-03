@@ -24,6 +24,10 @@ input {
   }
 }
 
+input, textarea {
+  outline: none;
+}
+
 button {
   cursor: pointer;
   padding: 0;
@@ -89,5 +93,17 @@ button {
     width: 73px;
     height: 3px;
     background: #333333;
+  }
+}
+
+@media (max-width: 1000px) {
+  .desktop-1000 {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .desktop-500 {
+    display: none;
   }
 }

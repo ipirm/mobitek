@@ -63,7 +63,7 @@ export default {
     if (!document.querySelector('#google-maps-script')) {
       script = document.createElement('script');
       script.setAttribute('id', 'google-maps-script')
-      script.src = 'http://maps.google.com/maps/api/js?key=AIzaSyDYu7NHXwvGDwGTZLvD_4oz845kbzROhE4&sensor=false&callback=initMap';
+      script.src = 'https://maps.google.com/maps/api/js?key=AIzaSyDYu7NHXwvGDwGTZLvD_4oz845kbzROhE4&sensor=false&callback=initMap';
       script.defer = true;
       script.async = true;
     }

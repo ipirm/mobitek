@@ -1,6 +1,6 @@
 <template>
   <div class="index-page">
-    <Welcome :data="slides" />
+    <Welcome :data="welcome" />
     <ProductShowcase />
     <ProductSlider :data="products" />
     <Banners :data="banners" />
@@ -36,7 +36,7 @@ export default {
   },
   
   computed: {
-    ...mapState(['slides','banners','videos']),
+    ...mapState(['welcome','banners','videos']),
   },
 
   data() {

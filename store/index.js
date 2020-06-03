@@ -1,13 +1,13 @@
 import apiRequest from '~/utils/apiRequest'
 
 export const state = () => ({
-    slides: [],
+    welcome: [],
     banners: [],
     videos: []
 })
 
 export const mutations = {
-    SET_SLIDES: (state, payload) => state.slides = payload,
+    SET_WELCOME: (state, payload) => state.welcome = payload,
     SET_BANNERS: (state, payload) => state.banners = payload,
     SET_VIDEOS: (state, payload) => state.videos = payload,
 }
@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
     async getSlides({commit}) {
         const data = await apiRequest.get(`slides`);
-        commit('SET_SLIDES', data.data.products)
+        commit('SET_WELCOME', data.data.products)
     },
     async getBanners({commit}) {
         const data = await apiRequest.get(`banners`)

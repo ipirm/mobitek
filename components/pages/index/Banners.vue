@@ -5,7 +5,7 @@
                  :key="item.id">
                 <div class="flip-card__inner">
                     <div class="flip-card__front">
-                        <img src="~/static/pics/img/index/banner-how.png" :alt="$t('index.banners.how.alt')">
+                        <img :src="`${$imagesUrl}${item.image[$i18n.locale]}`" :alt="item.title[$i18n.locale]">
                     </div>
                     <div class="flip-card__back f-white b-dark">
                         <h2>{{ item.title[$i18n.locale] }}</h2>
@@ -18,7 +18,6 @@
 </template>
 <script>
     export default {
-        props: ['data'],
-        computed: {}
+        props: ['data']
     }
 </script>

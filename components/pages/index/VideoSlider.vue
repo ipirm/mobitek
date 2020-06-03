@@ -16,7 +16,9 @@
 		  						<img src="/pics/img/index/play.png" alt="Play">
 		  					</button>
 		  				</div>
-		  				<iframe :src="`https://www.youtube.com/embed/${video.text[$i18n.locale]}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen :id="`iframe-${i}`"></iframe>
+		  				<div class="video-wrapper">
+		  					<iframe :src="`https://www.youtube.com/embed/${video.text[$i18n.locale]}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen :id="`iframe-${i}`"></iframe>
+		  				</div>
 		  			</div>
 	  			</div>
 	  		</div>

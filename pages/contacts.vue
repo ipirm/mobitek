@@ -59,10 +59,14 @@ export default {
   },
 
   mounted() {
-    let script = document.createElement('script');
-    script.src = 'http://maps.google.com/maps/api/js?key=AIzaSyDYu7NHXwvGDwGTZLvD_4oz845kbzROhE4&sensor=false&callback=initMap';
-    script.defer = true;
-    script.async = true;
+    let script;
+    if (!document.querySelector('#google-maps-script')) {
+      script = document.createElement('script');
+      script.setAttribute('id', 'google-maps-script')
+      script.src = 'http://maps.google.com/maps/api/js?key=AIzaSyDYu7NHXwvGDwGTZLvD_4oz845kbzROhE4&sensor=false&callback=initMap';
+      script.defer = true;
+      script.async = true;
+    }
 
     window.initMap = () => {
       let locations = this.stores ? [...this.stores.map(v => [v.address, ...v.mapPos])] : [];
@@ -92,7 +96,11 @@ export default {
       }
     }
 
-    document.head.appendChild(script);
+    if (!document.querySelector('#google-maps-script')) {
+      document.head.appendChild(script);
+    } else {
+      window.initMap();
+    }
   },
 
   computed: {

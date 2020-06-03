@@ -17,6 +17,8 @@ import Banners from '~/components/pages/index/Banners';
 import VideoSlider from '~/components/pages/index/VideoSlider';
 import BottomFeatures from '~/components/pages/index/BottomFeatures';
 
+import {mapState} from 'vuex';
+
 export default {
   components: {
     Welcome,
@@ -28,14 +30,14 @@ export default {
   },
 
   async fetch({store}) {
-    await store.dispatch('mains/getSlides');
-    await store.dispatch('mains/getBanners');
-    await store.dispatch('mains/getVideos');
+    await store.dispatch('getSlides');
+    await store.dispatch('getBanners');
+    await store.dispatch('getVideos');
   },
   
   computed: {
-    ...mapState('mains', ['slides','banners','videos']),
-  }
+    ...mapState(['slides','banners','videos']),
+  },
 
   data() {
     return {

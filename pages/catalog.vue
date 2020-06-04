@@ -213,15 +213,58 @@ export default {
         }
 			],
 
-			prices: [0,25,50,100,500]
+			prices: [0,25,50,100,500],
+
+			category: null,
+			type: null,
+			title: null
 		}
 	},
 
-	methods: {
-		search() {
-
+	watch: {
+		minPrice(n,o) {
+			this.updateQuery();
 		},
 
+		maxPrice(n,o) {
+			this.updateQuery();
+		},
+
+		filterByPrice(n,o) {
+			this.updateQuery();
+		},
+
+		filterByProductNewness(n,o) {
+			this.updateQuery();
+		},
+
+		colors(n,o) {
+			this.updateQuery();
+		},
+
+		brands(n,o) {
+			this.updateQuery();
+		},
+
+		connectors(n,o) {
+			this.updateQuery();
+		},
+
+		page(n,o) {
+			this.updateQuery(true);
+		}
+	},
+
+	watchQuery(n, o) {
+    this.search();
+  },
+
+  created() {
+  	this.readURLQuery();
+  	this.search();
+  },
+
+	methods: {
 		getReviewsText(reviewCount) {
 			if (this.$i18n.locale == 'en') {
 				if (reviewCount % 10 == 1)
@@ -242,7 +285,126 @@ export default {
 
 		setMaximumPrice(price) {
 			this.maxPrice = price;
-		}
+		},
+
+		search() {
+			// this.VUEX_FUNCTION_TO_SEARCH(this.getSearchQuery());
+		},
+
+		readURLQuery() {
+			let cur;
+
+			if (this.$route.query.brand) {
+				this.$route.query.brand.forEach(brand => {
+					cur = this.brands.find(b => b.title == brand);
+					if (cur)
+						cur.chosen = true;
+				});
+			}
+
+			if (this.$route.query.color) {
+				this.$route.query.color.forEach(color => {
+					cur = this.colors.find(c => c.title == color);
+					if (cur)
+						cur.chosen = true;
+				});
+			}
+
+			if (this.$route.query.connector) {
+				this.$route.query.connector.forEach(connector => {
+					cur = this.connectors.find(c => c.title == connector);
+					if (cur)
+						cur.chosen = true;
+				});
+			}
+
+			if (this.$route.query.title)
+				this.title = this.$route.query.title;
+
+			if (this.$route.query.type)
+				this.type = this.$route.query.type;
+
+			if (this.$route.query.cat)
+				this.category = this.$route.query.cat;
+
+			if (this.$route.query.min_price)
+				this.minPrice = this.$route.query.min_price;
+
+			if (this.$route.query.max_price)
+				this.maxPrice = this.$route.query.max_price;
+
+			if (this.$route.query.order == 'asc')
+				this.filterByPrice = 'ascending';
+			else if (this.$route.query.order == 'desc')
+				this.filterByPrice = 'descending';
+		},
+
+		updateQuery(savePage) {
+			if (!savePage)
+          this.curPage = 1;
+      this.$router.push({ query: this.getURLQuery() });
+		},
+
+		getURLQuery() {
+			// brand=Anker&color=%23A1A1A1&title=PowerDrive&type=editor_choice&cat=19&lang=en&min_price=10&max_price=60&order=asc&connector=lightning
+			
+			let query = {};
+
+			this.colors.forEach(item => {
+				if (item.chosen) {
+					if (!query.color)
+						query.color = [];
+					query.color.push(item.color);			
+				}
+			});
+
+			this.brands.forEach(item => {
+				if (item.chosen) {
+					if (!query.brand)
+						query.brand = [];
+					query.brand.push(item.title);
+				}
+			});
+
+			this.connectors.forEach(item => {
+				if (item.chosen) {
+					if (!query.connector)
+						query.connector = [];
+					query.connector.push(item.title);
+				}
+			});
+
+			if (this.filterByPrice == 'ascending')
+				query.order = 'asc';
+			else if (this.filterByPrice == 'descending')
+				query.ord = 'desc';
+
+			if (this.category)
+				query.cat = this.category;
+
+			if (this.type)
+				query.type = this.type;
+
+			if (this.title)
+				query.title = this.title;
+
+			query.min_price = this.minPrice;
+			query.max_price = this.maxPrice;
+
+			query.page = this.page;
+
+			return query;
+		},
+
+    getSearchQuery() {
+      let query = this.getURLQuery();
+
+      if (this.$i18n)
+        query.lang = this.$i18n.locale;
+      query.per_page = this.perPage;
+
+      return query;
+    }
 	}
 }
 </script>

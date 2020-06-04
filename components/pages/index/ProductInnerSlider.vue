@@ -1,5 +1,5 @@
 <template>
-	<div v-swiper:productSwiper="productSwiperOption">
+	<div v-swiper:productSwiper="productSwiperOption" class="index-page__product-slider__inner">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" v-for="(product, i) in data.products" :key="i">
 				<div class="index-page__product-slider__card">
@@ -35,11 +35,32 @@ export default {
 	data() {
 		return {
 			productSwiperOption: {
-				slidesPerView: 4,
-				spaceBetween: 25,
+				slidesPerView: 'auto',
+				spaceBetween: 15,
 				loop: true,
 				observer: true,
-				observeParents: true
+				observeParents: true,
+				centeredSlides: true,
+
+				breakpoints: {
+					1151: {
+						slidesPerView: 4,
+						centeredSlides: false
+					},
+					901: {
+						slidesPerView: 3,
+						centeredSlides: false
+					},
+					651: {
+						slidesPerView: 2,
+						centeredSlides: false
+					},
+					451: {
+						spaceBetween: 25,
+						slidesPerView: 'auto',
+						centeredSlides: true
+					}
+				}
 			}
 		}
 	},

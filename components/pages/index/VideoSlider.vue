@@ -37,29 +37,27 @@ export default {
 				spaceBetween: 25,
 				speed: 500,
 				init: false
-			}
+			},
+
+			minHeight: 450,
+			minMaxDifference: 50,
+			heightChangeDuration: 500
 		}
 	},
 
 	mounted() {
-		let slides = this.$el.querySelectorAll('.index-page__video-slider__item'),
-				overlays = this.$el.querySelectorAll('.index-page__video-slider__item .overlay'),
-				i;	
-
 		this.mySwiper.on('slideChange', () => {
+			// set the correct slide sizes and
 			// loop through all slides and change heights
-			for (i = 0; i < slides.length; i++) {
-				if (i == this.mySwiper.activeIndex) {
-					this.animateHeight(slides[i], overlays[i], 450, 500);
-				} else {
-					this.animateHeight(slides[i], overlays[i], 500, 450);
-				}
-			}
+			this.onResize();
 		});
 
 		this.mySwiper.init(this.swiperOption);
 
 		this.mySwiper.slideTo(this.mySwiper.slides.length / 2);
+
+		window.addEventListener('resize', this.onResize, false);
+		this.onResize();
 	},
 
 	methods: {
@@ -74,8 +72,43 @@ export default {
 			}
 		},
 
+		onResize() {
+			if (!document.querySelector('.index-page')) {
+				window.removeEventListener('resize', this.onResize, false);
+				return;
+			}
+
+			if (window.innerWidth > 1000) {
+				this.minHeight = 450;
+			} else if (window.innerWidth > 900) {
+				this.minHeight = 400;
+			} else if (window.innerWidth > 700) {
+				this.minHeight = 300;
+			} else if (window.innerWidth > 600) {
+				this.minHeight = 250;
+			} else if (window.innerWidth > 400) {
+				this.minHeight = 180;
+			} else if (window.innerWidth > 350) {
+				this.minHeight = 130;
+			} else if (window.innerWidth >= 300) {
+				this.minHeight = 100;
+			}
+
+			let slides = this.$el.querySelectorAll('.index-page__video-slider__item'),
+					overlays = this.$el.querySelectorAll('.index-page__video-slider__item .overlay'),
+					i;	
+
+			for (i = 0; i < slides.length; i++) {
+				if (i == this.mySwiper.activeIndex) {
+					this.animateHeight(slides[i], overlays[i], this.minHeight, this.minHeight+this.minMaxDifference);
+				} else {
+					this.animateHeight(slides[i], overlays[i], this.minHeight+this.minMaxDifference, this.minHeight);
+				}
+			}
+		},
+
 		animateHeight(el1, el2, from, to) {
-			let duration = 500, // ms
+			let duration = this.heightChangeDuration, // ms
 					start = new Date().getTime(),
 					runtime = 0,
 					progress = 0,
@@ -95,10 +128,10 @@ export default {
 					el1.style.height = `${from + (from < to ? curChange : -curChange)}px`;
 					el2.style.background = `rgba(255,255,255,${(from > to ? curChange : 50-curChange)/100})`;
 					window.requestAnimationFrame(animate);
-				} else {
+				} // else { // fix the height and the opacity to the desired ones
 					// el1.style.height = `${to}px`;
 					// el2.style.background = `rgba(255,255,255,${from < to ? 0 : .5})`;
-				}
+				// }
 			}
 			animate();
 		},

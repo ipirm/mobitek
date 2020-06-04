@@ -13,22 +13,22 @@
 						<img src="/pics/img/header/mobile-menu-button.png">
 					</button>
 					<div class="header__mobile__menu" :class="{active: mobileMenuShown}">
-						<a to="/" @click.prevent="mobileLink('/')" class="header__mobile__menu__logo" v-body-scroll-lock="mobileMenuShown">
+						<a href="/" @click.prevent="mobileLink('/')" class="header__mobile__menu__logo" v-body-scroll-lock="mobileMenuShown">
 							<img src="/pics/svg/header/logo-raw.svg">
 						</a>
 						<div class="header__mobile__menu__content">
 							<ul>
 								<li>
-									<a to="/" @click.prevent="mobileLink('/')" :class="{ active: isExactPage('/') }">{{ $t('header.home') }}</a>
+									<a href="/" @click.prevent="mobileLink('/')" :class="{ active: isExactPage('/') }">{{ $t('header.home') }}</a>
 								</li>
 								<li>
-									<a to="/catalog" @click.prevent="mobileLink('/catalog')" :class="{ active: isExactPage('/catalog') }">{{ $t('header.catalog') }}</a>
+									<a href="/catalog" @click.prevent="mobileLink('/catalog')" :class="{ active: isExactPage('/catalog') }">{{ $t('header.catalog') }}</a>
 								</li>
 								<li>
-									<a to="/about" @click.prevent="mobileLink('/about')" :class="{ active: isExactPage('/about') }">{{ $t('header.about') }}</a>
+									<a href="/about" @click.prevent="mobileLink('/about')" :class="{ active: isExactPage('/about') }">{{ $t('header.about') }}</a>
 								</li>
 								<li>
-									<a to="/contacts" @click.prevent="mobileLink('/contacts')" :class="{ active: isExactPage('/contacts') }">{{ $t('header.contacts') }}</a>
+									<a href="/contacts" @click.prevent="mobileLink('/contacts')" :class="{ active: isExactPage('/contacts') }">{{ $t('header.contacts') }}</a>
 								</li>
 							</ul>
 							<div class="header__mobile__menu__close" @click="hideMobileMenu()">

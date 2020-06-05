@@ -112,7 +112,7 @@ export default {
   methods: {
   	showOnMap(pos) {
   		// scroll down to the map
-  		window.scrollTo({ top: document.querySelector('#map-title').getBoundingClientRect().y - 100, behavior: 'smooth' })
+  		window.scrollTo({ top: document.querySelector('#map-title').getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' })
   		// show the marker on the map
   		google.maps.event.trigger(this.map.markers.find(v => v.position.lat() == pos[0] && v.position.lng() == pos[1]), 'click');
   	}

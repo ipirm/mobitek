@@ -4,10 +4,13 @@
 			<div class="store-card__top">
 				<img class="logo" src="/pics/svg/contacts/card-logo.svg" alt="mobitek">
 				<img class="bg" src="/pics/svg/contacts/card-rectangle-big.svg">
+				<img class="bg small" src="/pics/svg/contacts/card-rectangle.svg">
+				<img class="bg tiny" src="/pics/svg/contacts/card-rectangle-tiny.svg">
 				<h2 class="title">{{ data.title }}</h2>
 			</div>
 			<div class="store-card__bottom">
-				<div class="row">
+				<h3 class="details big">{{ $t('contacts.card.details') }}</h3>
+				<div class="row special">
 					<div class="item">
 						<img src="/pics/img/contacts/phone.png" alt="phone">
 						<a @click.stop class="phone" :href="`tel:${data.phone ? data.phone.replace(' ', '').replace('(', '').replace(')', '') : '/'}`"><span>{{ data.phone }}</span></a>

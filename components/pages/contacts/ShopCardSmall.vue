@@ -4,6 +4,8 @@
 			<div class="store-card__top">
 				<img class="logo" src="/pics/svg/contacts/card-logo.svg" alt="mobitek">
 				<img class="bg" src="/pics/svg/contacts/card-rectangle.svg">
+				<img class="bg big" src="/pics/svg/contacts/card-rectangle-big.svg">
+				<img class="bg tiny" src="/pics/svg/contacts/card-rectangle-tiny.svg">
 				<h2 class="title">{{ data.title }}</h2>
 			</div>
 			<div class="store-card__bottom">

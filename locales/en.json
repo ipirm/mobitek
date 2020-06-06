@@ -75,7 +75,8 @@
 		"brand": "Brand",
 		"connector": "Connector",
 		"price": "Price",
-		"empty": "No results"
+		"empty": "No results",
+		"filters": "Filters"
 	},
 
 	"product": {

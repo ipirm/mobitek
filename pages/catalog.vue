@@ -6,24 +6,29 @@
 			<CatalogSearch @search="search" v-model="searchInput" />
 			<div class="catalog-page__double">
 				<aside class="catalog-page__filter">
+					<button class="catalog-page__filter__mobile-toggler" @click="toggleMobileFilters()">
+						<span>{{ $t('catalog.filters') }}</span>
+					</button>
 					<div class="catalog-page__filter__inner">
-						<h2 class="catalog-page__filter__section-title">{{ $t('catalog.color') }}</h2>
-						<ColorChooser v-model="colors" />
-						<h2 class="catalog-page__filter__section-title">{{ $t('catalog.brand') }}</h2>
-						<div class="catalog-page__filter__brands">
-							<div class="catalog-page__filter__choosable catalog-page__filter__brands__item" v-for="(brand,i) in brands" :key="i" @click="brand.chosen = !brand.chosen" :class="{ active: brand.chosen }">{{ brand.title }}</div>
+						<div class="catalog-page__filter__content">
+							<h2 class="catalog-page__filter__section-title">{{ $t('catalog.color') }}</h2>
+							<ColorChooser v-model="colors" />
+							<h2 class="catalog-page__filter__section-title">{{ $t('catalog.brand') }}</h2>
+							<div class="catalog-page__filter__brands">
+								<div class="catalog-page__filter__choosable catalog-page__filter__brands__item" v-for="(brand,i) in brands" :key="i" @click="brand.chosen = !brand.chosen" :class="{ active: brand.chosen }">{{ brand.title }}</div>
+							</div>
+							<h2 class="catalog-page__filter__section-title">{{ $t('catalog.connector') }}</h2>
+							<div class="catalog-page__filter__connectors">
+								<div class="catalog-page__filter__choosable catalog-page__filter__connectors__item" v-for="(connector,i) in connectors" @click="connector.chosen = !connector.chosen" :class="{ active: connector.chosen }">{{ connector.title }}</div>
+							</div>
+							<PriceRangeSlider @setMin="setMinimumPrice($event)" @setMax="setMaximumPrice($event)" :prices="prices" />
 						</div>
-						<h2 class="catalog-page__filter__section-title">{{ $t('catalog.connector') }}</h2>
-						<div class="catalog-page__filter__connectors">
-							<div class="catalog-page__filter__choosable catalog-page__filter__connectors__item" v-for="(connector,i) in connectors" @click="connector.chosen = !connector.chosen" :class="{ active: connector.chosen }">{{ connector.title }}</div>
-						</div>
-						<PriceRangeSlider @setMin="setMinimumPrice($event)" @setMax="setMaximumPrice($event)" :prices="prices" />
 					</div>
 				</aside>
 				<main class="catalog-page__content">
 					<div class="catalog-page__top-filters">
-						<DropdownFilter v-model="filterByPrice" :options="filtersByPrice" />
-						<DropdownFilter v-model="filterByProductNewness" :options="filtersByProductNewness" />
+						<DropdownFilter v-model="filterByPrice" :options="filtersByPrice" class="filter-left" />
+						<DropdownFilter v-model="filterByProductNewness" :options="filtersByProductNewness" class="filter-right" />
 					</div>
 					<div class="catalog-page__products">
 						<div class="index-page__product-slider__card" v-for="(product,i) in products.slice((page-1)*perPage, Math.min(page*perPage, products.length))" :key="i">
@@ -76,6 +81,8 @@ export default {
 	data() {
 		return {
 			searchInput: '',
+
+			mobileFiltersShown: false,
 			
 			minPrice: 0,
 			maxPrice: 500,
@@ -179,7 +186,7 @@ export default {
           title: 'PD Pioneer 20000mAh Portable Charger',
           description: 'Substantial 60W PD output means it can charge your MacBook Pro perfectly, just as good as the original charger',
           rating: 5,
-          pic: 'pics/img/index/p1.png',
+          pic: 'pics/img/product.png',
           link: '/product/xz',
           price: 45
         },
@@ -188,7 +195,7 @@ export default {
           title: 'Anker PowerWave Pad & Stand 7.5W',
           description: 'Qi-Certified 7.5W for iPhone Xs Max XR XS X 8/8 Plus, 10W Fast Charging Samsungs',
           rating: 5,
-          pic: 'pics/img/index/p2.png',
+          pic: 'pics/img/product.png',
           link: '/product/xz',
           price: 45
         },
@@ -197,7 +204,7 @@ export default {
           title: 'Anker PowerPort Speed PD 5',
           description: 'Premium 60W 5-Port Desktop Charger with One 30W Power Delivery',
           rating: 5,
-          pic: 'pics/img/index/p3.png',
+          pic: 'pics/img/product.png',
           link: '/product/xz',
           editorsChoice: true,
           price: 45
@@ -207,7 +214,7 @@ export default {
           title: 'Baseus Encok True Wireless Earphones W07',
           description: 'Automatic Switching of Primary and Secondary Earphone;Dual Mic noise reduction design',
           rating: 5,
-          pic: 'pics/img/index/p4.png',
+          pic: 'pics/img/product.png',
           link: '/product/xz',
           price: 45
         }
@@ -262,6 +269,11 @@ export default {
   created() {
   	this.readURLQuery();
   	this.search();
+  },
+
+  mounted() {
+  	window.addEventListener('resize', this.onResize, false);
+  	this.onResize();
   },
 
 	methods: {
@@ -396,15 +408,41 @@ export default {
 			return query;
 		},
 
-    getSearchQuery() {
-      let query = this.getURLQuery();
+	    getSearchQuery() {
+	      let query = this.getURLQuery();
 
-      if (this.$i18n)
-        query.lang = this.$i18n.locale;
-      query.per_page = this.perPage;
+	      if (this.$i18n)
+	        query.lang = this.$i18n.locale;
+	      query.per_page = this.perPage;
 
-      return query;
-    }
+	      return query;
+	    },
+
+	    toggleMobileFilters() {
+	    	this.mobileFiltersShown = !this.mobileFiltersShown;
+
+	    	let filters = this.$el.querySelector('.catalog-page__filter__inner');
+			
+			if (this.mobileFiltersShown)
+				filters.style.height = filters.scrollHeight + 'px';
+			else
+				filters.style.height = 0;
+	    },
+
+	    onResize() {
+	    	if (!document.querySelector('.catalog-page')) {
+	    		window.removeEventListener('resize', this.onResize, false);
+	    		return;
+	    	}
+
+	    	if (window.innerWidth > 650) {
+	    		if (!this.mobileFiltersShown)
+	    			this.toggleMobileFilters();
+	    	} else {
+	    		if (this.mobileFiltersShown)
+	    			this.toggleMobileFilters();
+	    	}
+	    }
 	}
 }
 </script>

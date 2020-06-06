@@ -56,7 +56,7 @@
             </div>
           </div>
         </div>
-        <div class="product-page__input-area">
+        <div class="product-page__input-area desktop-450">
           <div class="product-page__input-area__top">
             <div class="product-page__input-area__col">
               <h2 class="product-page__input-area__title">{{ $t('product.fast-order') }}</h2>
@@ -70,6 +70,23 @@
               <input type="text" name="surname" maxlength="100" :placeholder="$t('product.enter-surname')" v-model="surname">
               <input type="email" name="email" maxlength="320" :placeholder="$t('product.enter-email')" v-model="email">
             </div>
+          </div>
+          <textarea :placeholder="$t('product.enter-address')" maxlength="500" v-model="address"></textarea>
+          <div class="product-page__input-area__bottom">
+            <button class="add">{{ $t('product.add-to-cart') }}</button>
+            <button class="buy">{{ $t('product.buy-now') }}</button>
+          </div>
+        </div>
+        <div class="product-page__input-area mobile">
+          <div class="product-page__input-area__top">
+            <h2 class="product-page__input-area__title">{{ $t('product.fast-order') }}</h2>
+            <div class="product-page__input-area__colors">
+              <ColorChooser v-model="colors" />
+            </div>
+            <input type="text" name="name" maxlength="100" :placeholder="$t('product.enter-name')" v-model="name">
+            <input type="text" name="surname" maxlength="100" :placeholder="$t('product.enter-surname')" v-model="surname">
+            <input type="text" name="phone" maxlength="100" :placeholder="$t('product.enter-phone')" v-model="phone">
+            <input type="email" name="email" maxlength="320" :placeholder="$t('product.enter-email')" v-model="email">
           </div>
           <textarea :placeholder="$t('product.enter-address')" maxlength="500" v-model="address"></textarea>
           <div class="product-page__input-area__bottom">
@@ -139,28 +156,60 @@ export default {
       activeSlide: 0,
 
       leftSwiperOption: {
-        slidesPerView: 'auto',
-        spaceBetween: 15,
+        slidesPerView: 4,
+        spaceBetween: 10,
         freeMode: true,
-        direction: 'vertical',
-        init: false
+        direction: 'horizontal',
+        init: false,
+        observer: true,
+        observeParents: true,
+
+        breakpoints: {
+          1201: {
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            spaceBetween: 15
+          },
+
+          1001: {
+            slidesPerView: 4,
+            spaceBetween: 15
+          },
+
+          901: {
+            slidesPerView: 3,
+            spaceBetween: 10
+          },
+
+          701: {
+            slidesPerView: 6,
+            spaceBetween: 15
+          },
+
+          571: {
+            slidesPerView: 5,
+            spaceBetween: 10
+          }
+        }
       },
 
       rightSwiperOption: {
         spaceBetween: 10,
-        init: false
+        init: false,
+        observer: true,
+        observeParents: true,
       },
 
       product: {
         pics: [
-          '/pics/img/product/1.png',
-          '/pics/img/product/2.png',
-          '/pics/img/product/3.png',
-          '/pics/img/product/4.png',
-          '/pics/img/product/1.png',
-          '/pics/img/product/2.png',
-          '/pics/img/product/3.png',
-          '/pics/img/product/4.png'
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png',
+          '/pics/img/product.png'
         ],
         price: 45,
         stars: 5,
@@ -203,7 +252,7 @@ export default {
           title: 'PD Pioneer 20000mAh Portable Charger',
           description: 'Substantial 60W PD output means it can charge your MacBook Pro perfectly, just as good as the original charger',
           rating: 5,
-          pic: '/pics/img/index/p1.png',
+          pic: '/pics/img/product.png',
           link: '/product/xz',
           price: 45
         },
@@ -212,7 +261,7 @@ export default {
           title: 'Anker PowerWave Pad & Stand 7.5W',
           description: 'Qi-Certified 7.5W for iPhone Xs Max XR XS X 8/8 Plus, 10W Fast Charging Samsungs',
           rating: 5,
-          pic: '/pics/img/index/p2.png',
+          pic: '/pics/img/product.png',
           link: '/product/xz',
           price: 45
         },
@@ -221,7 +270,7 @@ export default {
           title: 'Anker PowerPort Speed PD 5',
           description: 'Premium 60W 5-Port Desktop Charger with One 30W Power Delivery',
           rating: 5,
-          pic: '/pics/img/index/p3.png',
+          pic: '/pics/img/product.png',
           link: '/product/xz',
           editorsChoice: true,
           price: 45
@@ -231,7 +280,7 @@ export default {
           title: 'Baseus Encok True Wireless Earphones W07',
           description: 'Automatic Switching of Primary and Secondary Earphone;Dual Mic noise reduction design',
           rating: 5,
-          pic: '/pics/img/index/p4.png',
+          pic: '/pics/img/product.png',
           link: '/product/xz',
           price: 45
         }

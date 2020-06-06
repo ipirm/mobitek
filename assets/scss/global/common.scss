@@ -126,3 +126,9 @@ button {
     }
   }
 }
+
+@media (max-width: 450px) {
+  .desktop-450 {
+    display: none;
+  }
+}

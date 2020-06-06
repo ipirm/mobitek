@@ -50,10 +50,32 @@ export default {
 	data() {
     return {
       mySwiperOptions: {
-        slidesPerView: 4,
+		slidesPerView: 'auto',
+		spaceBetween: 15,
+		loop: true,
+		observer: true,
+		observeParents: true,
+		centeredSlides: true,
+
+		breakpoints: {
+			1151: {
+				slidesPerView: 4,
+				centeredSlides: false
+			},
+			901: {
+				slidesPerView: 3,
+				centeredSlides: false
+			},
+			651: {
+				slidesPerView: 2,
+				centeredSlides: false
+			},
+			451: {
 				spaceBetween: 25,
-				observer: true,
-				observeParents: true
+				slidesPerView: 'auto',
+				centeredSlides: true
+			}
+		}
       }
     }
   },

@@ -284,3 +284,50 @@
 		}
 	}
 }
+
+@media (max-width: 1150px) {
+	.catalog-page {
+		&__inner {
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.catalog-page {
+		&__search {
+			&__bar {
+				button {
+					padding: 13px 11px;
+					font-size: 13px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	.catalog-page {
+		&__inner {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		&__search {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.catalog-page {
+		&__title {
+			font-size: 18px;
+			line-height: 22px;
+			margin-bottom: 10px;
+		}
+	}
+}

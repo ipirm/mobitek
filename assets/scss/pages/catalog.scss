@@ -335,10 +335,6 @@
 			}
 		}
 
-		&__filter {
-			width: 100%;
-		}
-
 		.index-page__product-slider__card {
 			max-width: unset;
 			width: 100%;
@@ -367,6 +363,7 @@
 		}
 
 		&__filter {
+			width: 100%;
 			flex-direction: column;
 
 			&__inner {

@@ -437,7 +437,8 @@ export default {
 
 	    	if (window.innerWidth > 650) {
 	    		if (!this.mobileFiltersShown)
-	    			this.toggleMobileFilters();
+	    			this.mobileFiltersShown = true;
+	    		this.$el.querySelector('.catalog-page__filter__inner').style.height = '';    		
 	    	} else {
 	    		if (this.mobileFiltersShown)
 	    			this.toggleMobileFilters();

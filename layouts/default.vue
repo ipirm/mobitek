@@ -1,5 +1,7 @@
 <template>
   <div>
+  	<Preloader />
+
   	<Header />
     <nuxt />
     <Footer />
@@ -12,12 +14,14 @@
 import Header from '~/components/global/Header';
 import Footer from '~/components/global/Footer';
 import GoToTop from '~/components/global/GoToTop';
+import Preloader from '~/components/global/Preloader';
 
 export default {
 	components: {
 		Header,
 		Footer,
-		GoToTop
+		GoToTop,
+		Preloader
 	},
 
 	watch: {

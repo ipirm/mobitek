@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import {easeInOutQuad} from '~/utils/ease';
+
 export default {
 	props: ['data'],
 
@@ -111,7 +113,6 @@ export default {
 			let duration = this.heightChangeDuration, // ms
 					start = new Date().getTime(),
 					runtime = 0,
-					progress = 0,
 					newChange,
 					curChange = 0;
 
@@ -122,7 +123,7 @@ export default {
 
 			let animate = () => {
 				runtime = new Date().getTime() - start;
-				newChange = this.easeInOutQuad(runtime, 0, from > to ? from - to : to - from, duration);
+				newChange = easeInOutQuad(runtime, 0, from > to ? from - to : to - from, duration);
 				if (newChange >= curChange) {
 					curChange = newChange;
 					el1.style.height = `${from + (from < to ? curChange : -curChange)}px`;
@@ -134,13 +135,6 @@ export default {
 				// }
 			}
 			animate();
-		},
-
-		easeInOutQuad(t, b, c, d) {
-		  t /= d/2;
-			if (t < 1) return c/2*t*t + b;
-			t--;
-			return -c/2 * (t*(t-2) - 1) + b;
 		}
 	}
 }

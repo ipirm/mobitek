@@ -12,7 +12,7 @@ export default {
 		return {
 			preloaderShown: true,
 			bounceDuration: 750,
-			sonicScaleDuration: 200,
+			sonicScaleDuration: 400,
 			fadeDuration: 750
 		}
 	},
@@ -23,8 +23,8 @@ export default {
 
     window.onNuxtReady(app => {
     	setTimeout(() => {
-      	this.bounce(logo, 1, 2, () => {
-      		this.sonicScale(logo, 2, () => {
+      	this.bounce(logo, 1, 2, (scale) => {
+      		this.sonicScale(logo, scale, () => {
       			this.fade(preloader, 1, 0, () => {
       				setTimeout(() => {
       					this.preloaderShown = false;
@@ -61,7 +61,7 @@ export default {
         	from = temp;
         	if (callback)
         		callback();
-        	else sonic();
+        	else sonic(from + (from < to ? curChange : -curChange));
         }
       }
       animate(animate);

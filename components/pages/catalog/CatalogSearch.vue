@@ -2,9 +2,9 @@
 	<div class="catalog-page__search">
 		<div class="catalog-page__search__bar">
 			<div class="catalog-page__search__bar__input-area">
-				<input type="text" :placeholder="$t('catalog.enter-product-name')" @focus="showAutocomplete = true" @blur="showAutocomplete = false">
+				<input type="text" :placeholder="$t('catalog.enter-product-name')" @focus="showAutocomplete = true" @blur="showAutocomplete = false" :value="value" @input="setValue($event.target.value)">
 			</div>
-			<button>
+			<button @click="search()">
 				<span>{{ $t('catalog.search') }}</span>
 			</button>
 		</div>
@@ -50,6 +50,16 @@ export default {
 					link: '/'
 				}
 			]
+		}
+	},
+
+	methods: {
+		setValue(value) {
+			this.$emit('input', value);
+		},
+
+		search() {
+			this.$emit('search');
 		}
 	}
 }

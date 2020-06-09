@@ -12,7 +12,7 @@
           <div class="catalog-page__filter__inner">
             <div class="catalog-page__filter__content">
               <h2 class="catalog-page__filter__section-title">{{ $t('catalog.color') }}</h2>
-              <ColorChooser v-model="colors" />
+              <ColorChooser :colors="colors" :chosen="chosenColors" @toggleColor="toggleColor($event)" />
               <h2 class="catalog-page__filter__section-title">{{ $t('catalog.brand') }}</h2>
               <div class="catalog-page__filter__brands">
                 <div class="catalog-page__filter__choosable catalog-page__filter__brands__item" v-for="(brand,i) in brands" :key="i" @click="toggleBrand(i)" :class="{ active: chosenBrands[i] }">{{ brand.title[$i18n.locale] }}</div>
@@ -105,30 +105,9 @@ export default {
         'old'
       ],
 
-      colors: [{
-          color: 'red',
-          chosen: false
-        },
-        {
-          color: 'yellow',
-          chosen: false
-        },
-        {
-          color: 'purple',
-          chosen: false
-        },
-        {
-          color: 'black',
-          chosen: false
-        },
-        {
-          color: 'gray',
-          chosen: false
-        }
-      ],
-
       chosenBrands: [],
       chosenConnectors: [],
+      chosenColors: [],
       prices: [0, 25, 50, 100, 500],
 
       category: null,
@@ -152,10 +131,6 @@ export default {
       this.updateQuery();
     },
 
-    colors(n, o) {
-      this.updateQuery();
-    },
-
     page(n, o) {
       this.updateQuery(true);
     }
@@ -168,6 +143,7 @@ export default {
   async fetch() {
   	await this.$store.dispatch('catalog/getBrands');
   	await this.$store.dispatch('catalog/getConnectors');
+  	await this.$store.dispatch('catalog/getColors');
   },
 
   mounted() {
@@ -176,12 +152,13 @@ export default {
 
     this.chosenBrands = new Array(this.brands.length).fill(false);
     this.chosenConnectors = new Array(this.connectors.length).fill(false);
+    this.chosenColors = new Array(this.colors.length).fill(false);
   	this.readURLQuery();
     this.search();
   },
 
   computed: {
-  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts'])
+  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts', 'colors'])
   },
 
   methods: {
@@ -198,6 +175,13 @@ export default {
   		this.chosenConnectors[i] = !this.chosenConnectors[i];
   		this.chosenConnectors.push({});
   		this.chosenConnectors.pop();
+  		this.updateQuery();
+  	},
+
+  	toggleColor(i) {
+  		this.chosenColors[i] = !this.chosenColors[i];
+  		this.chosenColors.push({});
+  		this.chosenColors.pop();
   		this.updateQuery();
   	},
 
@@ -255,14 +239,14 @@ export default {
       }
 
       if (this.$route.query.color) {
-      	if (this.$route.query.color.forEach) {
-	        this.$route.query.color.forEach(color => {
-	          if (cur = this.colors.find(c => c.title == color))
-	            cur.chosen = true;
-	        });
+      	if (this.$route.query.color.forEach) { // means it's an array
+      		this.$route.query.color.forEach(slug => {
+      			if (cur = this.colors.findIndex(c => c.slug == slug))
+      				this.chosenColors[cur] = true;
+      		});
 	      } else {
-	      	if (cur = this.colors.find(c => c.title == this.$route.query.color))
-          	cur.chosen = true;
+	      	if (cur = this.colors.findIndex(c => c.slug == this.$route.query.color))
+	      		this.chosenColors[cur] = true;
 	      }
       }
 
@@ -282,6 +266,11 @@ export default {
         this.filterByProductNewness = 'old';
       else if (this.$route.query.order == 'desc')
         this.filterByProductNewness = 'new';
+
+      if (this.$route.query.price == 'asc')
+        this.filterByPrice = 'ascending';
+      else if (this.$route.query.price == 'desc')
+        this.filterByPrice = 'descending';
     },
 
     updateQuery(savePage) {
@@ -295,13 +284,13 @@ export default {
 
       let query = {};
 
-      this.colors.forEach(item => {
-        if (item.chosen) {
-          if (!query.color)
+      for (let i = 0; i < this.colors.length; i++) {
+      	if (this.chosenColors[i]) {
+      		if (!query.color)
             query.color = [];
-          query.color.push(item.color);
-        }
-      });
+          query.color.push(this.colors[i].slug);
+      	}
+      }
 
       for (let i = 0; i < this.brands.length; i++) {
       	if (this.chosenBrands[i]) {
@@ -323,6 +312,11 @@ export default {
         query.order = 'asc';
       else if (this.filterByProductNewness == 'new')
         query.order = 'desc';
+
+      if (this.filterByPrice == 'old')
+        query.price = 'asc';
+      else if (this.filterByPrice == 'new')
+        query.price = 'desc';
 
       if (this.category)
         query.cat = this.category;

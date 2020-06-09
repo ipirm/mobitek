@@ -4,14 +4,16 @@ export const state = () => ({
   products: [],
   totalProducts: 0,
   brands: [],
-  connectors: []
+  connectors: [],
+  colors: []
 })
 
 export const mutations = {
   SET_PRODUCTS: (state, payload) => state.products = payload,
   SET_TOTAL_PRODUCTS: (state, payload) => state.totalProducts = payload,
   SET_BRANDS: (state, payload) => state.brands = payload,
-  SET_CONNECTORS: (state, payload) => state.connectors = payload
+  SET_CONNECTORS: (state, payload) => state.connectors = payload,
+  SET_COLORS: (state, payload) => state.colors = payload
 }
 
 export const actions = {
@@ -19,9 +21,7 @@ export const actions = {
     let query = '';
     if (data) {
       query = Object.keys(data).map(key => {
-        if (key != 'color')
-          return key + '=' + data[key]
-        else return key + '=%23' + data[key]
+        return key + '=' + data[key]
       }).join('&');
     }
 
@@ -40,14 +40,20 @@ export const actions = {
   },
 
   async getBrands({ commit }) {
-    const res = await apiRequest.get(`brands`);
+    const res = await apiRequest.get('brands');
     if (res && res.data && res.data.data)
       commit('SET_BRANDS', res.data.data);
   },
 
   async getConnectors({ commit }, data) {
-    const res = await apiRequest.get(`devices`);
+    const res = await apiRequest.get('devices');
     if (res && res.data && res.data.data)
       commit('SET_CONNECTORS', res.data.data);
+  },
+
+  async getColors({ commit }, data) {
+    const res = await apiRequest.get('colors');
+    if (res && res.data && res.data.data)
+      commit('SET_COLORS', res.data.data);
   }
 }

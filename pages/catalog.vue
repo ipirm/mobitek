@@ -32,7 +32,7 @@
           </div>
           <div class="catalog-page__products">
             <div class="index-page__product-slider__card" v-for="(product,i) in products" :key="i">
-              <nuxt-link :to="product.slug ? `/product/${product.slug}` : '/'" class="index-page__product-slider__card__inner">
+              <nuxt-link :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
                 <div class="editors-choice" v-show="product.type == 'editor_choice'">
                   <img src="/pics/img/editors-choice.png" alt="Editor's choice">
                 </div>
@@ -113,7 +113,9 @@ export default {
       category: null,
     }
   },
+  created(){
 
+  },
   watch: {
     minPrice(n, o) {
       this.updateQuery();

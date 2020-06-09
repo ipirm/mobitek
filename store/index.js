@@ -5,7 +5,10 @@ export const state = () => ({
     banners: [],
     videos: [],
     about: [],
-    certificates: []
+    product1: {},
+    certificates: [],
+    productSlides: [],
+    catsProducts: []
 })
 
 export const mutations = {
@@ -14,6 +17,9 @@ export const mutations = {
     SET_VIDEOS: (state, payload) => state.videos = payload,
     SET_ABOUT: (state, payload) => state.about = payload,
     SET_DOCS: (state, payload) => state.certificates = payload,
+    SET_PRODUCTS_SLIDER: (state, payload) => state.productSlides = payload,
+    SET_PRODUCT: (state, payload) => state.product1 = payload,
+    SET_CATS_PRODUCT: (state, payload) => state.catsProducts = payload,
 }
 
 export const actions = {
@@ -36,5 +42,19 @@ export const actions = {
     async getCertificates({commit}) {
         const data = await apiRequest.get(`certificates`)
         commit('SET_DOCS', data.data.data)
-    }
+    },
+    async getProductsSlides({commit},body) {
+        console.log(body);
+        const data = await apiRequest.get(`products?type=${body.item.type}&lang=${body.lang}`)
+        commit('SET_PRODUCTS_SLIDER', data.data.data)
+    },
+    async getProduct({commit},link) {
+        const data = await apiRequest.get(`product/${link}`)
+        commit('SET_PRODUCT', data.data.news)
+    },
+
+    async getCatsProducts({commit},id) {
+        const data = await apiRequest.get(`products?cat=${id}&lang=en`)
+        commit('SET_CATS_PRODUCT', data.data.data)
+    },
 }

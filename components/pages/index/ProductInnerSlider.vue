@@ -1,26 +1,30 @@
 <template>
 	<div v-swiper:productSwiper="productSwiperOption" class="index-page__product-slider__inner">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide" v-for="(product, i) in data.products" :key="i">
+			<div class="swiper-slide">
 				<div class="index-page__product-slider__card">
-					<nuxt-link :to="product.link" class="index-page__product-slider__card__inner">
-						<div class="editors-choice" v-show="product.editorsChoice">
+					<nuxt-link :to="'/'" class="index-page__product-slider__card__inner">
+						<div class="editors-choice">
 							<img src="/pics/img/editors-choice.png" alt="Editor's choice">
 						</div>
 						<div class="pic">
-							<img :src="product.pic" :alt="product.title">
+							<img
+									:src="`https://mobitek.az/${JSON.parse(data.images)[0].url}`"
+								    :alt="`${JSON.parse(data.images)[0].image}`"
+									:key="index"
+							>
 						</div>
 						<div class="info">
 							<div class="top">
 								<div class="stars">
-									<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">
+<!--									<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">-->
 								</div>
-								<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>
+<!--								<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
 							</div>
-							<div class="title">{{ product.title }}</div>
-							<div class="description">{{ product.description }}</div>
+							<div class="title">{{ data.title }}</div>
+							<div class="description">{{ data.description }}</div>
 						</div>
-						<div class="price">{{ product.price }} azn</div>
+						<div class="price">{{ data.price }} azn</div>
 					</nuxt-link>
 				</div>
 			</div>

@@ -8,22 +8,25 @@
 	      <div class="swiper-wrapper">
 	        <div class="swiper-slide" v-for="(product, i) in data" :key="i">
 						<div class="index-page__product-slider__card">
-							<nuxt-link :to="product.link" class="index-page__product-slider__card__inner">
+							<nuxt-link :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
 								<div class="editors-choice" v-show="product.editorsChoice">
 									<img src="/pics/img/editors-choice.png" alt="Editor's choice">
 								</div>
 								<div class="pic">
-									<img :src="product.pic" :alt="product.title">
+									<img
+											:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
+											:alt="`${JSON.parse(product.images)[0].image}`"
+											:key="index">
 								</div>
 								<div class="info">
 									<div class="top">
 										<div class="stars">
 											<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">
 										</div>
-										<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>
+<!--										<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
 									</div>
-									<div class="title">{{ product.title }}</div>
-									<div class="description">{{ product.description }}</div>
+									<div class="title">{{ product.title[$i18n.locale] }}</div>
+									<div class="description">{{ product.description[$i18n.locale] }}</div>
 								</div>
 								<div class="price">{{ product.price }} azn</div>
 							</nuxt-link>
@@ -95,5 +98,5 @@ export default {
 			return '';
 		}
 	}
-}	
+}
 </script>

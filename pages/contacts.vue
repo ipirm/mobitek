@@ -11,12 +11,15 @@
         <div class="contacts-page__map" id="map"></div>
       </div>
     </main>
+    {{ contacts }}
   </div>
 </template>
 <script>
+
 import PageTitle from '~/components/global/PageTitle';
 import ShopCardSmall from '~/components/pages/contacts/ShopCardSmall';
 import ShopCardBig from '~/components/pages/contacts/ShopCardBig';
+import {mapState} from 'vuex'
 
 export default {
   components: {
@@ -24,7 +27,9 @@ export default {
     ShopCardSmall,
     ShopCardBig
   },
-
+  async fetch({store}) {
+    await store.dispatch('getContacts')
+  },
   data() {
     return {
     	map: {
@@ -106,7 +111,8 @@ export default {
   computed: {
     isStoreNumberEven() {
     	return this.stores && this.stores.length % 2 == 0;
-    }
+    },
+      ...mapState(['contacts'])
   },
 
   methods: {

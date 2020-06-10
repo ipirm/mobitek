@@ -13,7 +13,8 @@ export const state = () => ({
         editor: []
     },
     catsProducts: [],
-    categories: []
+    categories: [],
+    contacts: []
 })
 
 export const mutations = {
@@ -28,6 +29,7 @@ export const mutations = {
     SET_PRODUCT: (state, payload) => state.product = payload,
     SET_CATS: (state, payload) => state.categories = payload,
     SET_CATS_PRODUCT: (state, payload) => state.catsProducts = payload,
+    SET_CONTACT_DATA: (state, payload) => state.contacts = payload,
 }
 
 export const actions = {
@@ -71,5 +73,9 @@ export const actions = {
     async getCatsProducts({commit},id) {
         const data = await apiRequest.get(`products?cat=${id}&lang=en`)
         commit('SET_CATS_PRODUCT', data.data.data)
+    },
+    async getContacts({commit}) {
+        const data = await apiRequest.get(`contact`)
+        commit('SET_CONTACT_DATA', data.data.data)
     },
 }

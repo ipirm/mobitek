@@ -4,11 +4,11 @@
 		"catalog": "Catalog",
 		"about": "About us",
 		"contacts": "Contacts"
-	},
+	}, 
 
 	"footer": {
-		"home": "Home",
-		"information": "Information",
+		"home": "Information",
+		"information": "Home",
 		"catalog": "Catalog",
 		"about-us": "About us",
 		"contacts-us": "Contact us",
@@ -24,7 +24,7 @@
 		"mail": "Mail",
 		"stay-connected": {
 			"title": "STAY CONNECTED",
-			"text": "Enter your e-mail Adress to receive NEWS about our new products",
+			"text": "Enter your E-mail Adress to receive NEWS about our new products",
 			"send": "Send"
 		}
 	},
@@ -42,6 +42,24 @@
 
 		"product-slider": {
 			"see-more": "See More"
+		},
+
+		"banners": {
+			"how": {
+				"alt": "How does fast charging work?",
+				"title": "HOW DOES FAST CHARGING WORK?",
+				"text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
+			},
+			"apple": {
+				"alt": "What is Apple MFI License?",
+				"title": "What is Apple MFI License?",
+				"text": "Apple MFi certification is a license shown that Apple (Apple Inc.) has authorized accessory manufacturers to mark the MFi logo on their products. MFi is the abbreviation of Made for iPod, Made for iPhone, and Made for iPad. Apple allows manufacturers to print the MFi logo on the product package."
+			},
+			"smart": {
+				"alt": "Smart Home?-Yes,Please",
+				"title": "Smart Home?-Yes,Please",
+				"text": "'Smart home' denotes the use of technical systems, automated processes and connected, remote-controlled devices in apartments and houses. The main objective of the functions is to improve the quality of life and convenience in the home. Other goals are greater security and more efficient use of energy thanks to connected, remote-controllable devices."
+			}
 		},
 
 		"bottom-features": {
@@ -62,8 +80,7 @@
 
 	"about": {
 		"title": "About Us",
-		"certificates": "Our Certificates",
-		"show": "Show"
+		"certificates": "Our Certificates"
 	},
 
 	"catalog": {
@@ -75,8 +92,7 @@
 		"brand": "Brand",
 		"connector": "Connector",
 		"price": "Price",
-		"empty": "No results",
-		"filters": "Filters"
+		"empty": "No results"
 	},
 
 	"product": {

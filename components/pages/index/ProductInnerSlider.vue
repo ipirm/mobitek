@@ -21,8 +21,8 @@
 								</div>
 <!--								<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
 							</div>
-							<div class="title">{{ data.title }}</div>
-							<div class="description">{{ data.description }}</div>
+							<div class="title">{{ data.title[$i18n.locale] }}</div>
+							<div class="description">{{ data.description[$i18n.locale] }}</div>
 						</div>
 						<div class="price">{{ data.price }} azn</div>
 					</nuxt-link>

@@ -7,104 +7,108 @@
 	},
 
 	"footer": {
-		"home": "Information",
-		"information": "Home",
-		"catalog": "Catalog",
-		"about-us": "About us",
-		"contacts-us": "Contact us",
-		"to-clients": "To clients",
-		"delivery-rules": "Delivery rules",
-		"our-promotions": "Our promotions",
-		"bonuses": "Bonuses",
-		"follow-us": "Follow us",
-		"contact-us": "Contact us",
-		"contacts": "Contacts",
-		"phone": "Phone",
-		"office": "Office",
+		"home": "Главная", 
+		"information": "Информация",
+		"catalog": "Каталог",
+		"about-us": "О нас",
+		"contacts-us": "Контакты",
+		"to-clients": "Клиентам",
+		"delivery-rules": "Правила доставки",
+		"our-promotions": "ННаши промо-акции",
+		"bonuses": "Бонусы",
+		"follow-us": "Подписывайтесь на нас",
+		"contact-us": "Связаться с нами",
+		"contacts": "Контакты",
+		"phone": "Телефон",
+		"office": "Офис",
 		"mail": "Mail",
 		"stay-connected": {
-			"title": "STAY CONNECTED",
-			"text": "Enter your E-mail Adress to receive NEWS about our new products",
-			"send": "Send"
+			"title": "ОСТАВАТЬСЯ НА СВЯЗИ",
+			"text": "Запишите свой адрес эл. почты для того, чтобы получать новую информацию.",
+			"send": "Отправить"
 		}
 	},
 
 	"index": {
 		"product-showcase": {
-			"charger": "Charger",
-			"car": "Car",
-			"audio": "Audio",
-			"protectors-cases": "Protectors & Cases",
-			"usb": "USB Cables",
-			"home": "Home Appliance",
-			"game": "Game"
+			"charger": "Зарядное устройство",
+			"car": "Авто-аксессуары",
+			"audio": "Аудио",
+			"protectors-cases": "Защитные пленки и чехлы",
+			"usb": "USB-кабели",
+			"home": "Бытовая техника",
+			"game": "Игровые аксессуары"
 		},
 
 		"product-slider": {
-			"see-more": "See More"
+			"see-more": "Узнать больше"
 		},
 
 		"banners": {
 			"how": {
-				"alt": "How does fast charging work?",
-				"title": "HOW DOES FAST CHARGING WORK?",
-				"text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
+				"alt": "Как работает быстрая зарядка?",
+				"title": "КАК РАБОТАЕТ БЫСТРАЯ ЗАРЯДКА?",
+				"text": "Когда-то в телефонах были слабые аккумуляторы, поэтому они заряжались достаточно быстро. С тех пор их ёмкость выросла примерно в 5-10 раз, и на столько же должно было увеличиться время их зарядки. Производители решают эту проблему разными способами, но их возможности ограничены, ведь они стараются придерживаться установленных стандартов.Большая часть смартфонов заряжаются от зарядных устройств, которые выдают напряжение 5 вольт с силой тока в пределах от 0,5 до 2 ампер. Тем не менее, существуют технологии ускоренной зарядки, обеспечивающие повышенный вольтаж и силу тока. Принцип работы любого аккумулятора основан на электрохимическом процессе, который позволяет накапливать энергию, а затем отдавать её. В современных мобильных устройствах чаще всего используются литий-ионные и литий-полимерные аккумуляторы, которые обладают высокой ёмкостью и низким саморазрядом. У них немало недостатков — со временем они постепенно теряют номинальную ёмкость, а при нагревании и повреждении могут воспламеняться.
+"
 			},
 			"apple": {
-				"alt": "Apple Lightning USB cable buy now Baku",
-				"title": "HOW DOES FAST CHARGING WORK?",
-				"text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
+				"alt": "Что такое лицензия Apple MFI?",
+				"title": "Что такое лицензия Apple MFI?",
+				"text": "Кабель MFi. Знак MFi означает, что кабель предназначен именно для продукции Apple (Made For iPhone, iPad, iPod) и, что самое важное, его производитель получил официальное одобрение от 'яблочной' корпорации. Корпорация Apple продает лицензии на производство аксессуаров для своих устройств."
 			},
 			"smart": {
-				"alt": "Smart Home",
-				"title": "HOW DOES FAST CHARGING WORK?",
-				"text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
-			}
+				"alt": "Умный дом? -Да, пожалуйста!",
+				"title": "Умный дом? -Да, пожалуйста!",
+				"text": "Умный дом — это комплекс решений для автоматизации повседневных действий, который избавит вас от рутины. Тут и бытовая техника — от роботов-пылесосов до приборов, управляемых со смартфона, — и системы, контролирующие всё, что происходит в квартире.По сути, это история об улучшении качества жизни. Комфорт состоит из мелочей, а умный дом возьмёт все мелочи на себя. Если вы проснулись ночью и пошли на кухню за стаканом воды, не придётся пробираться по тёмному коридору в поисках выключателя: свет загорится автоматически. Волновались ли вы когда-нибудь, что не выключили утюг или телевизор? Долой тревожные мысли: достаточно послать со смартфона команду умной розетке, а она отключит прибор, который от неё питается."
+		
+            }
 		},
 
 		"bottom-features": {
-			"fast-delivery": "Fast delivery",
-			"high-quality": "High quallity",
+			"fast-delivery": "Быстрая доставка",
+			"high-quality": "Высокое качество",
 			"instant-reply": "Instantly reply"
 		}
 	},
 
 	"contacts": {
-		"title": "Contacts",
-		"locations": "Our locations on the map",
+		"title": "Контакты",
+		"locations": "Наши местоположения на карте",
 		"card": {
-			"details": "Shop Details :",
-			"see-address": "See address on the map"
+			"details": "Детали магазина:",
+			"see-address": "Посмотреть адрес на карте"
 		}
 	},
 
 	"about": {
-		"title": "About Us",
-		"certificates": "Our Certificates"
+		"title": "О нас",
+		"certificates": "Наши сертификаты"
 	},
 
 	"catalog": {
-		"search-for-products": "Search for products",
-		"enter-product-name": "Enter product name",
-		"search": "Search",
-		"example": "Example: headphones, case, baseus, etc.",
-		"color": "Color",
-		"brand": "Brand",
-		"connector": "Connector",
-		"price": "Price",
-		"empty": "No results"
+		"search-for-products": "Поиск товаров",
+		"enter-product-name": "Введите название продукта",
+		"search": "Поиск",
+		"example": "Пример: headphones, case, baseus, etc.",
+		"color": "Цвет",
+		"brand": "Марка",
+		"connector": "Коннектор",
+		"price": "Цена",
+		"empty": "Нет результатов"
 	},
 
 	"product": {
-		"fast-order": "Fast order",
-		"properties": "Product properties",
-		"enter-name": "Enter Your Name",
-		"enter-surname": "Enter Your Surname",
-		"enter-phone": "Enter Your Phone Number",
-		"enter-email": "Enter Your Email",
-		"enter-address": "Enter Your Address",
-		"add-to-cart": "ADD TO CART",
-		"buy-now": "BUY NOW",
-		"also-buy": "You can also buy"
+		"fast-order": "Быстрый заказ",
+		"properties": "Свойства продукта",
+		"enter-name": "Имя",
+		"enter-surname": "Фамилия",
+		"enter-phone": "Номер телефона",
+		"enter-email": "Эл. почта",
+		"enter-address": "Адреса доставки",
+		"add-to-cart": "ДОБАВИТЬ В КОРЗИНУ",
+		"buy-now": "КУПИ СЕЙЧАС",
+		"also-buy": "Вы также можете купить"
 	}
 }
+
+

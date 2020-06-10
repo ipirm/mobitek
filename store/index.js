@@ -5,10 +5,15 @@ export const state = () => ({
     banners: [],
     videos: [],
     about: [],
-    product1: {},
+    product: {},
     certificates: [],
-    productSlides: [],
-    catsProducts: []
+    productSlides: {
+        top: [],
+        best: [],
+        editor: []
+    },
+    catsProducts: [],
+    categories: []
 })
 
 export const mutations = {
@@ -17,8 +22,11 @@ export const mutations = {
     SET_VIDEOS: (state, payload) => state.videos = payload,
     SET_ABOUT: (state, payload) => state.about = payload,
     SET_DOCS: (state, payload) => state.certificates = payload,
-    SET_PRODUCTS_SLIDER: (state, payload) => state.productSlides = payload,
-    SET_PRODUCT: (state, payload) => state.product1 = payload,
+    SET_PRODUCTS_SLIDER_TOP: (state, payload) => state.productSlides.top = payload,
+    SET_PRODUCTS_SLIDER_BEST: (state, payload) => state.productSlides.best = payload,
+    SET_PRODUCTS_SLIDER_EDITOR: (state, payload) => state.productSlides.editor = payload,
+    SET_PRODUCT: (state, payload) => state.product = payload,
+    SET_CATS: (state, payload) => state.categories = payload,
     SET_CATS_PRODUCT: (state, payload) => state.catsProducts = payload,
 }
 
@@ -26,6 +34,10 @@ export const actions = {
     async getSlides({commit}) {
         const data = await apiRequest.get(`slides`);
         commit('SET_WELCOME', data.data.products)
+    },
+    async getCategories({commit}) {
+        const data = await apiRequest.get(`cats`);
+        commit('SET_CATS', data.data)
     },
     async getBanners({commit}) {
         const data = await apiRequest.get(`banners`)
@@ -45,13 +57,17 @@ export const actions = {
     },
     async getProductsSlides({commit},body) {
         const data = await apiRequest.get(`products?type=${body.type}&lang=${body.lang}`)
-        commit('SET_PRODUCTS_SLIDER', data.data.data)
+        if (body.type == 'top_rated')
+            commit('SET_PRODUCTS_SLIDER_TOP', data.data.data);
+        else if (body.type == 'best_sellers')
+            commit('SET_PRODUCTS_SLIDER_BEST', data.data.data);
+        else if (body.type == 'editor_choice')
+            commit('SET_PRODUCTS_SLIDER_EDITOR', data.data.data);
     },
     async getProduct({commit},link) {
         const data = await apiRequest.get(`product/${link}`)
         commit('SET_PRODUCT', data.data.news)
     },
-
     async getCatsProducts({commit},id) {
         const data = await apiRequest.get(`products?cat=${id}&lang=en`)
         commit('SET_CATS_PRODUCT', data.data.data)

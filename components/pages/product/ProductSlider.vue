@@ -14,16 +14,16 @@
 								</div>
 								<div class="pic">
 									<img
-											:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
-											:alt="`${JSON.parse(product.images)[0].image}`"
-											:key="index">
+										:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
+										:alt="`${JSON.parse(product.images)[0].image}`"
+									>
 								</div>
 								<div class="info">
 									<div class="top">
 										<div class="stars">
-											<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">
+											<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.star }">
 										</div>
-<!--										<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
+										<span>({{ product.interesting }} {{ getReviewsText(product.interesting) }})</span>
 									</div>
 									<div class="title">{{ product.title[$i18n.locale] }}</div>
 									<div class="description">{{ product.description[$i18n.locale] }}</div>

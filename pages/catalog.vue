@@ -113,9 +113,7 @@ export default {
       category: null,
     }
   },
-  created(){
-
-  },
+  
   watch: {
     minPrice(n, o) {
       this.updateQuery();
@@ -146,6 +144,7 @@ export default {
   	await this.$store.dispatch('catalog/getBrands');
   	await this.$store.dispatch('catalog/getConnectors');
   	await this.$store.dispatch('catalog/getColors');
+    await this.$store.dispatch('catalog/getCategories');
   },
 
   mounted() {
@@ -160,7 +159,7 @@ export default {
   },
 
   computed: {
-  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts', 'colors'])
+  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts', 'colors', 'categories'])
   },
 
   methods: {
@@ -290,7 +289,7 @@ export default {
       	if (this.chosenColors[i]) {
       		if (!query.color)
             query.color = [];
-          query.color.push(this.colors[i].slug);
+          query.color.push(this.colors[i].title);
       	}
       }
 
@@ -315,9 +314,9 @@ export default {
       else if (this.filterByProductNewness == 'new')
         query.order = 'desc';
 
-      if (this.filterByPrice == 'old')
+      if (this.filterByPrice == 'ascending')
         query.price = 'asc';
-      else if (this.filterByPrice == 'new')
+      else if (this.filterByPrice == 'descending')
         query.price = 'desc';
 
       if (this.category)

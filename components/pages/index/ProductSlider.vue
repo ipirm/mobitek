@@ -8,8 +8,14 @@
     <div class="index-page__product-slider__middle container container--page">
       <div v-swiper:sectionSwiper="sectionSwiperOption">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(section, i) in data" :key="i">
-            <ProductInnerSlider :data="section" :index="i" />
+          <div class="swiper-slide">
+            <ProductInnerSlider :data="data.top" />
+          </div>
+          <div class="swiper-slide">
+            <ProductInnerSlider :data="data.best" />
+          </div>
+          <div class="swiper-slide">
+            <ProductInnerSlider :data="data.editor" />
           </div>
         </div>
       </div>

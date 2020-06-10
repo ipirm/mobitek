@@ -9,20 +9,20 @@
 						</div>
 						<div class="pic">
 							<img
-									:src="`https://mobitek.az/${JSON.parse(data.images)[0].url}`"
-								    :alt="`${JSON.parse(data.images)[0].image}`"
-									:key="index"
+								:src="`https://mobitek.az/${JSON.parse(data.images)[0].url}`"
+						    :alt="`${JSON.parse(data.images)[0].image}`"
+								:key="index"
 							>
 						</div>
 						<div class="info">
 							<div class="top">
 								<div class="stars">
-<!--									<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">-->
+									<!-- <img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.stars }"> -->
 								</div>
-<!--								<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
+								 <!-- <span>({{ product.interesting }} {{ getReviewsText(product.interesting) }})</span> -->
 							</div>
-							<div class="title">{{ data.title }}</div>
-							<div class="description">{{ data.description }}</div>
+							<div class="title">{{ data.title[$i18n.locale] }}</div>
+							<div class="description">{{ data.description[$i18n.locale] }}</div>
 						</div>
 						<div class="price">{{ data.price }} azn</div>
 					</nuxt-link>
@@ -48,18 +48,22 @@ export default {
 
 				breakpoints: {
 					1151: {
+						spaceBetween: 25,
 						slidesPerView: 4,
 						centeredSlides: false
 					},
 					901: {
+						spaceBetween: 25,
 						slidesPerView: 3,
 						centeredSlides: false
 					},
 					651: {
+						spaceBetween: 25,
 						slidesPerView: 2,
 						centeredSlides: false
 					},
 					451: {
+						spaceBetween: 25,
 						spaceBetween: 25,
 						slidesPerView: 'auto',
 						centeredSlides: true

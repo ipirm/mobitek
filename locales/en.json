@@ -41,7 +41,10 @@
 		},
 
 		"product-slider": {
-			"see-more": "See More"
+			"see-more": "See More",
+			"top-rated": "Top rated products",
+			"editors-choice": "Editor's Choices",
+			"best-sellers": "Best Sellers"
 		},
 
 		"bottom-features": {

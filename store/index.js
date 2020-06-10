@@ -44,8 +44,7 @@ export const actions = {
         commit('SET_DOCS', data.data.data)
     },
     async getProductsSlides({commit},body) {
-        console.log(body);
-        const data = await apiRequest.get(`products?type=${body.item.type}&lang=${body.lang}`)
+        const data = await apiRequest.get(`products?type=${body.type}&lang=${body.lang}`)
         commit('SET_PRODUCTS_SLIDER', data.data.data)
     },
     async getProduct({commit},link) {

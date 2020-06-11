@@ -26,15 +26,20 @@ export default {
 		$route(n, o) {
 			if (n.path.toLowerCase() == '/about' || n.path.toLowerCase() == `/${this.$i18n.locale}/about`)
 				document.body.style.background = 'white';
-			else
+            if (n.path.toLowerCase() == '/catalog' || n.path.toLowerCase() == `/${this.$i18n.locale}/catalog`)
+                document.body.style.overflow = 'visible';
+			else {
+                document.body.style.overflow = '';
 				document.body.style.background = '#EDEDED';
+            }
 		}
 	},
 
 	mounted() {
-		if (this.$route.path.toLowerCase() == '/about') {
+		if (this.$route.path.toLowerCase() == '/about' || this.$route.path.toLowerCase() == `/${this.$i18n.locale}/about`)
             document.body.style.background = 'white';
-        }
+        if (this.$route.path.toLowerCase() == '/catalog' || this.$route.path.toLowerCase() == `/${this.$i18n.locale}/catalog`)
+            document.body.style.overflow = 'visible';
         (function() {
             var s = document['createElement']('script');
             s.type = 'text/javascript';

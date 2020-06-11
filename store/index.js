@@ -88,6 +88,6 @@ export const actions = {
         console.log(data2);
     },
     async buyNow({commit}, data) {
-        console.log(data);
+        const data2 = await apiRequest.post(`order`,data)
     }
 }

@@ -50,7 +50,6 @@ export default {
   data() {
     return {
       sectionSwiperOption: {
-        spaceBetween: 10,
         allowTouchMove: false,
         observer: true,
         observeParents: true

@@ -30,16 +30,6 @@
 	},
 
 	"index": {
-		"product-showcase": {
-			"charger": "Charger",
-			"car": "Car",
-			"audio": "Audio",
-			"protectors-cases": "Protectors & Cases",
-			"usb": "USB Cables",
-			"home": "Home Appliance",
-			"game": "Game"
-		},
-
 		"product-slider": {
 			"see-more": "See More",
 			"top-rated": "Top rated products",
@@ -95,7 +85,8 @@
 		"brand": "Brand",
 		"connector": "Connector",
 		"price": "Price",
-		"empty": "No results"
+		"empty": "No results",
+		"filters": "Filters"
 	},
 
 	"product": {

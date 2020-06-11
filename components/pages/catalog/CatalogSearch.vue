@@ -2,7 +2,7 @@
 	<div class="catalog-page__search">
 		<div class="catalog-page__search__bar">
 			<div class="catalog-page__search__bar__input-area">
-				<input type="text" :placeholder="$t('catalog.enter-product-name')" @focus="showAutocomplete = true" @blur="showAutocomplete = false" :value="value" @input="setValue($event.target.value)">
+				<input type="text" :placeholder="$t('catalog.enter-product-name')" @keydown.enter="search()" @focus="showAutocomplete = true" @blur="showAutocomplete = false" :value="value" @input="setValue($event.target.value)">
 			</div>
 			<button @click="search()">
 				<span>{{ $t('catalog.search') }}</span>

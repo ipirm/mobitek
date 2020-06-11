@@ -1,6 +1,6 @@
 <template>
   <div class="product-page">
-    <ProductShowcase class="catalog-page__product-showcase" />
+    <ProductShowcase class="catalog-page__product-showcase" :data="categories" />
     <div class="product-page__content container">
       <div class="product-page__content__row">
         <div class="product-page__sliders">
@@ -87,8 +87,8 @@
           </div>
           <textarea :placeholder="$t('product.enter-address')" maxlength="500" v-model="address"></textarea>
           <div class="product-page__input-area__bottom">
-            <button class="add">{{ $t('product.add-to-cart') }}</button>
-            <button class="buy">{{ $t('product.buy-now') }}</button>
+            <button class="add" @click="toCart()">{{ $t('product.add-to-cart') }}</button>
+            <button class="buy" @click="buy()">{{ $t('product.buy-now') }}</button>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@ import ProductShowcase from '~/components/pages/index/ProductShowcase';
 import ProductSlider from '~/components/pages/product/ProductSlider';
 import ColorChooser from '~/components/global/ColorChooser';
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   components: {
@@ -111,9 +111,10 @@ export default {
   },
 
   async fetch({ store, route }) {
+    await store.dispatch('getCategories');
     await store.dispatch('getProduct', route.params.id).then(async () => {
       await store.dispatch('getCatsProducts', store.state.product.cat_id)
-    })
+    });
   },
 
   mounted() {
@@ -133,6 +134,30 @@ export default {
   },
 
   methods: {
+    ...mapActions(['buyNow', 'addToCart']),
+
+    buy() {
+      this.buyNow({
+        name: this.name,
+        surname: this.surname,
+        phone: this.phone,
+        email: this.email,
+        address: this.address,
+        color: this.chosenColor
+      });
+    },
+
+    toCart() {
+      this.addToCart({
+        name: this.name,
+        surname: this.surname,
+        phone: this.phone,
+        email: this.email,
+        address: this.address,
+        color: this.chosenColor
+      });
+    },
+
     getReviewsText(reviewCount) {
       if (this.$i18n.locale == 'en') {
         if (reviewCount % 10 == 1)
@@ -153,7 +178,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['product', 'catsProducts'])
+    ...mapState(['product', 'catsProducts', 'categories'])
   },
 
   data() {
@@ -163,9 +188,9 @@ export default {
       phone: '',
       email: '',
       address: '',
-      colors: [],
       chosenColor: '',
 
+      colors: [],
       activeSlide: 0,
 
       leftSwiperOption: {

@@ -39,7 +39,7 @@ export const actions = {
     },
     async getCategories({commit}) {
         const data = await apiRequest.get(`cats`);
-        commit('SET_CATS', data.data)
+        commit('SET_CATS', data.data.cats)
     },
     async getBanners({commit}) {
         const data = await apiRequest.get(`banners`)
@@ -78,4 +78,13 @@ export const actions = {
         const data = await apiRequest.get(`contact`)
         commit('SET_CONTACT_DATA', data.data.data)
     },
+    async stayConnected({commit}, data) {
+        console.log(data);
+    },
+    async addToCart({commit}, data) {
+        console.log(data);
+    },
+    async buyNow({commit}, data) {
+        console.log(data);
+    }
 }

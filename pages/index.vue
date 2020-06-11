@@ -1,7 +1,7 @@
 <template>
   <div class="index-page">
     <Welcome :data="welcome" />
-    <ProductShowcase />
+    <ProductShowcase :data="categories" />
     <ProductSlider :data="productSlides" :types="types" />
     <Banners :data="banners" />
     <VideoSlider :data="videos" />
@@ -33,6 +33,7 @@ export default {
     await store.dispatch('getSlides');
     await store.dispatch('getBanners');
     await store.dispatch('getVideos');
+    await store.dispatch('getCategories');
   },
 
   async created() {
@@ -43,7 +44,7 @@ export default {
   },
   
   computed: {
-    ...mapState(['welcome','banners','videos','productSlides'])
+    ...mapState(['welcome','banners','videos','productSlides', 'categories'])
   },
 
   data() {

@@ -1,6 +1,6 @@
 <template>
   <div class="catalog-page">
-    <ProductShowcase class="catalog-page__product-showcase" />
+    <ProductShowcase class="catalog-page__product-showcase" :data="categories" :chosen="category" @chooseCat="chooseCat($event)" />
     <div class="catalog-page__inner container">
       <h1 class="catalog-page__title">{{ $t('catalog.search-for-products') }}</h1>
       <CatalogSearch @search="updateQuery()" v-model="searchInput" />
@@ -110,12 +110,10 @@ export default {
       chosenColors: [],
       prices: [0, 25, 50, 100, 500],
 
-      category: null,
+      category: null
     }
   },
-  created(){
-
-  },
+  
   watch: {
     minPrice(n, o) {
       this.updateQuery();
@@ -146,6 +144,7 @@ export default {
   	await this.$store.dispatch('catalog/getBrands');
   	await this.$store.dispatch('catalog/getConnectors');
   	await this.$store.dispatch('catalog/getColors');
+    await this.$store.dispatch('getCategories');
   },
 
   mounted() {
@@ -157,14 +156,27 @@ export default {
     this.chosenColors = new Array(this.colors.length).fill(false);
   	this.readURLQuery();
     this.search();
+
+    this.$bus.$on('search', searchInput => {
+      this.searchInput = searchInput;
+      this.updateQuery();
+    });
   },
 
   computed: {
-  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts', 'colors'])
+  	...mapState('catalog', ['products', 'brands', 'connectors', 'totalProducts', 'colors']),
+    ...mapState(['categories'])
   },
 
   methods: {
   	...mapActions('catalog', ['getProducts']),
+
+    chooseCat(cat) {
+      if (this.category != cat)
+        this.category = cat;
+      else this.category = null;
+      this.updateQuery();
+    },
 
   	toggleBrand(i) {
   		this.chosenBrands[i] = !this.chosenBrands[i];
@@ -216,6 +228,9 @@ export default {
     readURLQuery() {
       let cur;
 
+      if (this.$route.query.cat)
+        this.category = this.$route.query.cat;
+
       if (this.$route.query.brand) {
       	if (this.$route.query.brand.forEach) { // means it's an array
       		this.$route.query.brand.forEach(slug => {
@@ -255,9 +270,6 @@ export default {
       if (this.$route.query.title)
         this.searchInput = this.$route.query.title;
 
-      if (this.$route.query.cat)
-        this.category = this.$route.query.cat;
-
       if (this.$route.query.min_price)
         this.minPrice = this.$route.query.min_price;
 
@@ -290,7 +302,7 @@ export default {
       	if (this.chosenColors[i]) {
       		if (!query.color)
             query.color = [];
-          query.color.push(this.colors[i].slug);
+          query.color.push(this.colors[i].title);
       	}
       }
 
@@ -315,9 +327,9 @@ export default {
       else if (this.filterByProductNewness == 'new')
         query.order = 'desc';
 
-      if (this.filterByPrice == 'old')
+      if (this.filterByPrice == 'ascending')
         query.price = 'asc';
-      else if (this.filterByPrice == 'new')
+      else if (this.filterByPrice == 'descending')
         query.price = 'desc';
 
       if (this.category)

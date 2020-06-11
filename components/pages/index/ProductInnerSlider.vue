@@ -1,30 +1,29 @@
 <template>
 	<div v-swiper:productSwiper="productSwiperOption" class="index-page__product-slider__inner">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">
+			<div class="swiper-slide" v-for="(product,i) in data" :key="i">
 				<div class="index-page__product-slider__card">
-					<nuxt-link :to="'/'" class="index-page__product-slider__card__inner">
-						<div class="editors-choice">
+					<nuxt-link :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
+						<div class="editors-choice" v-if="product.type == 'editor_choice'">
 							<img src="/pics/img/editors-choice.png" alt="Editor's choice">
 						</div>
 						<div class="pic">
 							<img
-									:src="`https://mobitek.az/${JSON.parse(data.images)[0].url}`"
-								    :alt="`${JSON.parse(data.images)[0].image}`"
-									:key="index"
+								:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
+					    	:alt="`${JSON.parse(product.images)[0].image}`"
 							>
 						</div>
 						<div class="info">
 							<div class="top">
 								<div class="stars">
-<!--									<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.rating }">-->
+									<img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.star }">
 								</div>
-<!--								<span>({{ product.reviews }} {{ getReviewsText(product.reviews) }})</span>-->
+								 <span>({{ product.interesting }} {{ getReviewsText(product.interesting) }})</span>
 							</div>
-							<div class="title">{{ data.title[$i18n.locale] }}</div>
-							<div class="description">{{ data.description[$i18n.locale] }}</div>
+							<div class="title">{{ product.title[$i18n.locale] }}</div>
+							<div class="description">{{ product.description[$i18n.locale] }}</div>
 						</div>
-						<div class="price">{{ data.price }} azn</div>
+						<div class="price">{{ product.price }} azn</div>
 					</nuxt-link>
 				</div>
 			</div>
@@ -34,7 +33,7 @@
 
 <script>
 export default {
-	props: ['data', 'index'],
+	props: ['data'],
 
 	data() {
 		return {
@@ -48,18 +47,22 @@ export default {
 
 				breakpoints: {
 					1151: {
+						spaceBetween: 25,
 						slidesPerView: 4,
 						centeredSlides: false
 					},
 					901: {
+						spaceBetween: 25,
 						slidesPerView: 3,
 						centeredSlides: false
 					},
 					651: {
+						spaceBetween: 25,
 						slidesPerView: 2,
 						centeredSlides: false
 					},
 					451: {
+						spaceBetween: 25,
 						spaceBetween: 25,
 						slidesPerView: 'auto',
 						centeredSlides: true

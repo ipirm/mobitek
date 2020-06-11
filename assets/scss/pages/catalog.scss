@@ -32,7 +32,8 @@
 	}
 
 	&__filter {
-		width: 290px;
+		min-width: 270px;
+		max-width: 270px;
 		display: flex;
 		align-items: flex-start;
 

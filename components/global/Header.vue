@@ -60,13 +60,13 @@
 				</div>
 				<div class="header__right">
 					<div class="header__search" :class="{aside: langsShown}">
-						<button class="header__search__button" @click="searchBarShown = !searchBarShown">
+						<button class="header__search__button" @click="search()">
 							<img alt="Search" src="/pics/img/header/search.png">
 						</button>
 						<div class="header__search__outer">
 							<div class="header__search__inner" :class="{active: searchBarShown}">
 								<div class="header__search__wrapper">
-									<input type="text" name="search">
+									<input type="text" name="search" v-model="searchInput" @keydown.enter="search()">
 								</div>
 							</div>
 						</div>
@@ -100,7 +100,9 @@ export default {
 			transparent: false,
 			mobileMenuShown: false,
 			mobileMenuBgActive: false,
-			mobileMenuBgVisible: false
+			mobileMenuBgVisible: false,
+
+			searchInput: ''
 		}
 	},
 
@@ -110,6 +112,16 @@ export default {
 	},
 
 	methods: {
+		search() {
+			if (this.searchBarShown && this.searchInput.trim().length > 0) {
+				if (this.$route.path.toLowerCase() != '/catalog' && this.$route.path.toLowerCase() != '/catalog/' + this.$i18n.locale)
+					this.$router.push(`/catalog?title=${this.searchInput}`);
+				else this.$bus.$emit('search', this.searchInput);
+			}
+			this.searchBarShown = !this.searchBarShown;
+			this.searchInput = '';
+		},
+
 		chooseLang(lang) {
 			this.langsShown = false;
 			setTimeout(() => {

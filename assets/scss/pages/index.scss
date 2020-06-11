@@ -81,6 +81,16 @@
 				align-items: center;
 				margin: 30px;
 
+				&.active {
+					.index-page__product-showcase__card__item__icon {
+						border-width: 3px;
+					}
+
+					span {
+						font-weight: 600;
+					}
+				}
+
 				&__icon {
 					width: 84px;
 					height: 84px;
@@ -173,10 +183,8 @@
 			position: relative;
 
 			.swiper-container {
-				padding-left: 5px;
-				padding-right: 5px;
-				margin: 0 -5px;
 				padding-bottom: 12px;
+				width: 100%;
 			}
 
 			.swiper-slide {

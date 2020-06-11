@@ -64,9 +64,14 @@ export default {
         },
         lazy: true,
         langDir: 'locales/'
-      }
-    ]
+      },
+    ],
+    '@nuxtjs/toast',
   ],
+  toast: {
+    position: 'bottom-right',
+    duration: 4000
+  },
   /*
   ** Build configuration
   */

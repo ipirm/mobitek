@@ -79,10 +79,13 @@ export const actions = {
         commit('SET_CONTACT_DATA', data.data.data)
     },
     async stayConnected({commit}, data) {
-        console.log(data);
+        const data2 = await apiRequest.post(`subsctibe`,data)
+
+        console.log(data2);
     },
     async addToCart({commit}, data) {
-        console.log(data);
+        const data2 = await apiRequest.post(`subsctibe`,data)
+        console.log(data2);
     },
     async buyNow({commit}, data) {
         console.log(data);

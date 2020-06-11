@@ -153,6 +153,7 @@ export default {
     ...mapActions(['buyNow', 'addToCart']),
 
     buy() {
+      console.log(this.name)
       this.buyNow({
         name: this.name,
         surname: this.surname,

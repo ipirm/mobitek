@@ -89,7 +89,7 @@
         <span class="title">{{ $t('footer.stay-connected.title') }}</span>
         <span class="text">{{ $t('footer.stay-connected.text') }}</span>
         <div class="send">
-          <input type="email" name="email" placeholder="Email address" v-model="email" @keydown.enter="subscribe()">
+          <input type="email" name="email" placeholder="Email address" v-model="email" @keydown.enter="subscribe()" required>
           <button @click="subscribe()"><span>{{ $t('footer.stay-connected.send') }}</span></button>
         </div>
       </div>
@@ -103,7 +103,7 @@ import {mapActions} from 'vuex';
 export default {
 	data() {
 		return {
-			email: ''
+			email: '',
 		}
 	},
 
@@ -111,9 +111,15 @@ export default {
 		...mapActions(['stayConnected']),
 
 		subscribe() {
-			this.stayConnected({
-				email: this.email
-			});
+		  if(this.email !== '') {
+            this.stayConnected({
+              email: this.email
+            }).then(()=>{
+              this.$toast.success('Спасибо за подписку')
+            });
+          }else{
+            this.$toast.error('Мейл не может быть пустым')
+          }
 		}
 	}
 }

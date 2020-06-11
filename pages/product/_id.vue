@@ -29,7 +29,7 @@
           <div class="product-page__product-info__reviews-price">
             <div class="product-page__product-info__rating">
               <div class="stars">
-                <img class="star" v-for="i in 5" :key="i" v-if="i <= product.star" :src="i <= product.star ? '/pics/svg/star.svg': ''" alt="star(s)">
+                <img class="star" v-for="i in parseInt(product.star)" :key="i" v-if="i <= product.star" :src="i <= product.star ? '/pics/svg/star.svg': ''" alt="star(s)">
               </div>
               <span>({{ product.interesting }} {{ getReviewsText(product.interesting) }})</span>
             </div>

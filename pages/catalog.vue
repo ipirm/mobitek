@@ -42,7 +42,7 @@
                 <div class="info">
                   <div class="top">
                     <div class="stars">
-                      <img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in 5" :key="rating" :class="{ active: rating < product.star }">
+                      <img src="~/static/pics/svg/star.svg" alt="Star" v-for="rating in parseInt(product.star)" :key="rating" :class="{ active: rating < product.star }">
                     </div>
                     <span>({{ product.interesting }} {{ getReviewsText(product.interesting) }})</span>
                   </div>
@@ -113,7 +113,7 @@ export default {
       category: null
     }
   },
-  
+
   watch: {
     minPrice(n, o) {
       this.updateQuery();

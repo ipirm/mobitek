@@ -103,5 +103,12 @@
 	},
 	"MetaTitle": "Example | Text About Example",
 	"metaDescription": "about site text",
-	"keywords": "example,example1,example2"
+	"keywords": "example,example1,example2",
+	"validate": {
+		"chosenColor": "Цвет не выбран",
+		"notAll": "Не все обязательные заполнены",
+		"success": "Ваша заявка принята",
+		"writeUs": "Спасибо за подписку",
+		"notWriteUs": "Мейл не может быть пустым en"
+	}
 }

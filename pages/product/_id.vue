@@ -176,7 +176,7 @@
             ...mapActions(['buyNow', 'addToCart']),
 
             buy() {
-                if (this.name !== '' && this.surname !== '' && this.phone !== '' && this.email !== '' && this.address !== '' && this.color !== '') {
+                if (this.name !== '' && this.surname !== '' && this.phone !== '' && this.email !== '' && this.address !== '') {
                     this.buyNow({
                         name: this.name,
                         surname: this.surname,
@@ -186,18 +186,18 @@
                         color: this.chosenColor,
                         productId: this.$route.params.id
                     }).then(() => {
-                        this.$toast.success('Ваша заявка принята');
+                        this.$toast.success(this.$t('validate.success'));
                         this.name = ''
                         this.surname = ''
                         this.phone = ''
                         this.email = ''
                         this.address = ''
-                        this.color = ''
+                        this.chosenColor = ''
                     });
-                } else if (this.color === '') {
-                    this.$toast.error('Цвет не выбран')
+                } else if (this.chosenColor === '') {
+                    this.$toast.error(this.$t('validate.chosenColor'))
                 } else {
-                    this.$toast.error('Не все обязательные заполнены')
+                    this.$toast.error(this.$t('validate.notAll'))
                 }
             },
 

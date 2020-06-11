@@ -15,11 +15,11 @@
               <ColorChooser :colors="colors" :chosen="chosenColors" @toggleColor="toggleColor($event)" />
               <h2 class="catalog-page__filter__section-title">{{ $t('catalog.brand') }}</h2>
               <div class="catalog-page__filter__brands">
-                <div class="catalog-page__filter__choosable catalog-page__filter__brands__item" v-for="(brand,i) in brands" :key="i" @click="toggleBrand(i)" :class="{ active: chosenBrands[i] }">{{ brand.title[$i18n.locale] }}</div>
+                <div class="catalog-page__filter__choosable catalog-page__filter__brands__item" v-for="(brand,i) in brands" :key="i" @click="chooseBrand(brand.slug)" :class="{ active: chosenBrand == brand.slug }">{{ brand.title[$i18n.locale] }}</div>
               </div>
               <h2 class="catalog-page__filter__section-title">{{ $t('catalog.connector') }}</h2>
               <div class="catalog-page__filter__connectors">
-                <div class="catalog-page__filter__choosable catalog-page__filter__connectors__item" v-for="(connector,i) in connectors" @click="toggleConnector(i)" :class="{ active: chosenConnectors[i] }">{{ connector.title }}</div>
+                <div class="catalog-page__filter__choosable catalog-page__filter__connectors__item" v-for="(connector,i) in connectors" @click="chooseConnector(connector.slug)" :class="{ active: chosenConnector == connector.slug }">{{ connector.title }}</div>
               </div>
               <PriceRangeSlider @setMin="setMinimumPrice($event)" @setMax="setMaximumPrice($event)" :prices="prices" />
             </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="catalog-page__products">
             <div class="index-page__product-slider__card" v-for="(product,i) in products" :key="i">
-              <nuxt-link :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
+              <clink :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
                 <div class="editors-choice" v-show="product.type == 'editor_choice'">
                   <img src="/pics/img/editors-choice.png" alt="Editor's choice">
                 </div>
@@ -50,7 +50,7 @@
                   <div class="description">{{ product.description[$i18n.locale] }}</div>
                 </div>
                 <div class="price">{{ product.price }} azn</div>
-              </nuxt-link>
+              </clink>
             </div>
           </div>
           <Pagination v-model="page" :perPage="perPage" :totalElems="totalProducts" emptyText="catalog.empty" />
@@ -105,10 +105,10 @@ export default {
         'old'
       ],
 
-      chosenBrands: [],
-      chosenConnectors: [],
+      chosenBrand: '',
+      chosenConnector: '',
       chosenColors: [],
-      prices: [0, 25, 50, 100, 500],
+      prices: [0, 50, 100, 500, 'inf'],
 
       category: null
     }
@@ -151,8 +151,6 @@ export default {
     window.addEventListener('resize', this.onResize, false);
     this.onResize();
 
-    this.chosenBrands = new Array(this.brands.length).fill(false);
-    this.chosenConnectors = new Array(this.connectors.length).fill(false);
     this.chosenColors = new Array(this.colors.length).fill(false);
   	this.readURLQuery();
     this.search();
@@ -171,26 +169,22 @@ export default {
   methods: {
   	...mapActions('catalog', ['getProducts']),
 
+    chooseBrand(brand) {
+      this.chosenBrand = brand;
+      this.updateQuery();
+    },
+
+    chooseConnector(connector) {
+      this.chosenConnector = connector;
+      this.updateQuery();
+    },
+
     chooseCat(cat) {
       if (this.category != cat)
         this.category = cat;
       else this.category = null;
       this.updateQuery();
     },
-
-  	toggleBrand(i) {
-  		this.chosenBrands[i] = !this.chosenBrands[i];
-  		this.chosenBrands.push({});
-  		this.chosenBrands.pop();
-  		this.updateQuery();
-  	},
-
-  	toggleConnector(i) {
-  		this.chosenConnectors[i] = !this.chosenConnectors[i];
-  		this.chosenConnectors.push({});
-  		this.chosenConnectors.pop();
-  		this.updateQuery();
-  	},
 
   	toggleColor(i) {
   		this.chosenColors[i] = !this.chosenColors[i];
@@ -231,29 +225,11 @@ export default {
       if (this.$route.query.cat)
         this.category = this.$route.query.cat;
 
-      if (this.$route.query.brand) {
-      	if (this.$route.query.brand.forEach) { // means it's an array
-      		this.$route.query.brand.forEach(slug => {
-      			if (cur = this.brands.findIndex(b => b.slug == slug))
-      				this.chosenBrands[cur] = true;
-      		});
-	      } else {
-	      	if (cur = this.brands.findIndex(b => b.slug == this.$route.query.brand))
-	      		this.chosenBrands[cur] = true;
-	      }
-      }
+      if (this.$route.query.brand)
+        this.chosenBrand = this.$route.query.brand;
 
-      if (this.$route.query.connector) {
-      	if (this.$route.query.connector.forEach) { // means it's an array
-      		this.$route.query.connector.forEach(slug => {
-      			if (cur = this.connectors.findIndex(c => c.slug == slug))
-      				this.chosenConnectors[cur] = true;
-      		});
-	      } else {
-	      	if (cur = this.connectors.findIndex(c => c.slug == this.$route.query.connector))
-	      		this.chosenConnectors[cur] = true;
-	      }
-      }
+      if (this.$route.query.connector)
+      	this.chosenConnector = this.$route.query.connector;
 
       if (this.$route.query.color) {
       	if (this.$route.query.color.forEach) { // means it's an array
@@ -270,11 +246,15 @@ export default {
       if (this.$route.query.title)
         this.searchInput = this.$route.query.title;
 
-      if (this.$route.query.min_price)
+      if (this.$route.query.min_price) {
         this.minPrice = this.$route.query.min_price;
+        this.$bus.$emit('setMin', this.minPrice);
+      }
 
-      if (this.$route.query.max_price)
+      if (this.$route.query.max_price) {
         this.maxPrice = this.$route.query.max_price;
+        this.$bus.$emit('setMax', this.maxPrice);
+      }
 
       if (this.$route.query.order == 'asc')
         this.filterByProductNewness = 'old';
@@ -306,21 +286,11 @@ export default {
       	}
       }
 
-      for (let i = 0; i < this.brands.length; i++) {
-      	if (this.chosenBrands[i]) {
-      		if (!query.brand)
-            query.brand = [];
-          query.brand.push(this.brands[i].slug);
-      	}
-      }
+      if (this.chosenBrand.length > 0)
+        query.brand = this.chosenBrand;
 
-      for (let i = 0; i < this.connectors.length; i++) {
-      	if (this.chosenConnectors[i]) {
-      		if (!query.connector)
-            query.connector = [];
-          query.connector.push(this.connectors[i].slug);
-      	}
-      }
+      if (this.chosenConnector.length > 0)
+        query.connector = this.chosenConnector;
 
       if (this.filterByProductNewness == 'old')
         query.order = 'asc';

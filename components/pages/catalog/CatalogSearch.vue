@@ -12,9 +12,9 @@
 		<div class="catalog-page__search__autocomplete" v-show="showAutocomplete">
 			<div class="catalog-page__search__autocomplete__top-line"></div>
 			<div class="catalog-page__search__autocomplete__inner">
-				<nuxt-link class="catalog-page__search__autocomplete__item" v-for="(item, i) in results" :key="i" :to="item.link">
+				<clink class="catalog-page__search__autocomplete__item" v-for="(item, i) in results" :key="i" :to="item.link">
 					<span>{{ item.title }}</span>
-				</nuxt-link>
+				</clink>
 			</div>
 		</div>
 	</div>

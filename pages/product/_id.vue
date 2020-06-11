@@ -70,8 +70,8 @@
           </div>
           <textarea :placeholder="$t('product.enter-address')" maxlength="500" v-model="address"></textarea>
           <div class="product-page__input-area__bottom">
-            <button class="add">{{ $t('product.add-to-cart') }}</button>
-            <button class="buy">{{ $t('product.buy-now') }}</button>
+            <button class="add" @click="toCart()">{{ $t('product.add-to-cart') }}</button>
+            <button class="buy" @click="buy()">{{ $t('product.buy-now') }}</button>
           </div>
         </div>
         <div class="product-page__input-area mobile">
@@ -96,6 +96,7 @@
     <ProductSlider :data="catsProducts" />
   </div>
 </template>
+
 <script>
 import ProductShowcase from '~/components/pages/index/ProductShowcase';
 import ProductSlider from '~/components/pages/product/ProductSlider';
@@ -116,11 +117,12 @@ export default {
       await store.dispatch('getCatsProducts', store.state.product.cat_id)
     });
   },
+
   head() {
     return {
       title: this.product.title[this.$i18n.locale],
       meta: [
-        {property: 'og:title', content: `${this.product.title[this.$i18n.locale]}` || ''},
+        {property: 'og:title', content: `${this.product.title[this.$i18n.locale]} | Mobitek` || ''},
         {
           property: 'og:description',
           content: `${this.product.description[this.$i18n.locale]}` || ''
@@ -133,6 +135,7 @@ export default {
       ]
     }
   },
+
   mounted() {
     this.rightSwiper.on('slideChange', () => {
       this.leftSwiper.slideTo(this.rightSwiper.activeIndex);
@@ -153,7 +156,6 @@ export default {
     ...mapActions(['buyNow', 'addToCart']),
 
     buy() {
-      console.log(this.name)
       this.buyNow({
         name: this.name,
         surname: this.surname,
@@ -257,5 +259,4 @@ export default {
     }
   }
 }
-
 </script>

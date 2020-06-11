@@ -29,9 +29,9 @@
       </button>
     </div>
     <div class="index-page__product-slider__bottom container container--page">
-      <nuxt-link to="/catalog">
+      <clink to="/catalog">
         <span>{{ $t('index.product-slider.see-more') }}</span>
-      </nuxt-link>
+      </clink>
     </div>
   </div>
 </template>

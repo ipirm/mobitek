@@ -126,10 +126,10 @@ export default {
           content: `${this.product.description[this.$i18n.locale]}` || ''
         },
         {name: 'description', content: `${this.product.description[this.$i18n.locale]}` || ''},
-        {property: 'og:image', content: `https://mobitek.az/${JSON.parse(this.product.images)[0].url}` || ''},
+        {property: 'og:image', content: `https://mobitek.az${JSON.parse(this.product.images)[0].url}` || ''},
         {name: 'keywords', content: `${this.$t('keywords')}` || ''},
         {property: 'og:url', content: `https://mobitek.az/${this.$route.fullPath}` || ''},
-        {property: 'twitter:card', content: `https://mobitek.az/${JSON.parse(this.product.images)[0].url}` || ''},
+        {property: 'twitter:card', content: `https://mobitek.az${JSON.parse(this.product.images)[0].url}` || ''},
       ]
     }
   },

@@ -8,7 +8,7 @@
 	      <div class="swiper-wrapper">
 	        <div class="swiper-slide" v-for="(product, i) in data" :key="i">
 				<div class="index-page__product-slider__card">
-					<nuxt-link :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
+					<clink :to="`/product/${product.slug}`" class="index-page__product-slider__card__inner">
 						<div class="editors-choice" v-show="product.type == 'editor_choice'">
 							<img src="/pics/img/editors-choice.png" alt="Editor's choice">
 						</div>
@@ -29,7 +29,7 @@
 							<div class="description">{{ product.description[$i18n.locale] }}</div>
 						</div>
 						<div class="price">{{ product.price }} azn</div>
-					</nuxt-link>
+					</clink>
 				</div>
 		      </div>
 		    </div>

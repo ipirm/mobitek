@@ -7,16 +7,16 @@
             <span class="title">{{ $t('footer.information') }}</span>
             <ul>
               <li>
-                <nuxt-link to="/">{{ $t('footer.home') }}</nuxt-link>
+                <clink to="/">{{ $t('footer.home') }}</clink>
               </li>
               <li>
-                <nuxt-link to="/catalog">{{ $t('footer.catalog') }}</nuxt-link>
+                <clink to="/catalog">{{ $t('footer.catalog') }}</clink>
               </li>
               <li>
-                <nuxt-link to="/about">{{ $t('footer.about-us') }}</nuxt-link>
+                <clink to="/about">{{ $t('footer.about-us') }}</clink>
               </li>
               <li>
-                <nuxt-link to="/contacts">{{ $t('footer.contact-us') }}</nuxt-link>
+                <clink to="/contacts">{{ $t('footer.contact-us') }}</clink>
               </li>
             </ul>
           </div>
@@ -26,13 +26,13 @@
             <span class="title">{{ $t('footer.to-clients') }}</span>
             <ul>
               <li>
-                <nuxt-link to="/rules">{{ $t('footer.delivery-rules') }}</nuxt-link>
+                <clink to="/rules">{{ $t('footer.delivery-rules') }}</clink>
               </li>
               <li>
-                <nuxt-link to="/promotions">{{ $t('footer.our-promotions') }}</nuxt-link>
+                <clink to="/promotions">{{ $t('footer.our-promotions') }}</clink>
               </li>
               <li>
-                <nuxt-link to="/bonuses">{{ $t('footer.bonuses') }}</nuxt-link>
+                <clink to="/bonuses">{{ $t('footer.bonuses') }}</clink>
               </li>
             </ul>
           </div>

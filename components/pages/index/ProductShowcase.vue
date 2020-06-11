@@ -19,9 +19,10 @@ export default {
 
 	methods: {
 		chooseCat(id) {
+			console.log(this.$route.path.toLowerCase());
 			// if not on the catalog page
-			if (this.$route.path.toLowerCase() != '/catalog' && this.$route.path.toLowerCase() != '/catalog/' + this.$i18n.locale) {
-				this.$router.push(`/catalog?cat=${id}`);
+			if (this.$route.path.toLowerCase() != '/catalog' && this.$route.path.toLowerCase() != `/${this.$i18n.locale}/catalog`) {
+				this.$router.push(this.$i18n.locale == 'en' ? `/catalog?cat=${id}` : `/${this.$i18n.locale}/catalog?cat=${id}`);
 			} else this.$emit('chooseCat', id);
 		}
 	}

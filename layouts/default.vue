@@ -24,7 +24,7 @@ export default {
 
 	watch: {
 		$route(n, o) {
-			if (n.path.toLowerCase() == '/about')
+			if (n.path.toLowerCase() == '/about' || n.path.toLowerCase() == `/${this.$i18n.locale}/about`)
 				document.body.style.background = 'white';
 			else
 				document.body.style.background = '#EDEDED';

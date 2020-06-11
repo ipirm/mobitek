@@ -37,6 +37,7 @@ export default {
   plugins: [
     '~/plugins/swiper',
     '~/plugins/bus',
+    '~/plugins/components',
     {src: '~/plugins/scroll-lock', ssr: false},
     {src: '~/plugins/vue-backtotop', ssr: false}
   ],

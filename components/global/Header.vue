@@ -3,9 +3,9 @@
 		<div class="header__content__wrapper">
 			<div class="header__content container container--header">
 				<div class="header__left desktop-1000">
-					<nuxt-link to="/" class="header__logo">
+					<clink to="/" class="header__logo">
 						<img src="~/static/pics/svg/header/logo.svg">
-					</nuxt-link>
+					</clink>
 				</div>
 				<div class="header__mobile__bg" :class="{active: mobileMenuBgActive, visible: mobileMenuBgVisible}" @click="hideMobileMenu()"></div>
 				<div class="header__left mobile">
@@ -40,23 +40,23 @@
 				<nav class="header__middle desktop-1000">
 					<ul>
 						<li>
-							<nuxt-link to="/" :class="{ active: isExactPage('/') }">{{ $t('header.home') }}</nuxt-link>
+							<clink to="/" :class="{ active: isExactPage('/') }">{{ $t('header.home') }}</clink>
 						</li>
 						<li>
-							<nuxt-link to="/catalog" :class="{ active: isExactPage('/catalog') }">{{ $t('header.catalog') }}</nuxt-link>
+							<clink to="/catalog" :class="{ active: isExactPage('/catalog') }">{{ $t('header.catalog') }}</clink>
 						</li>
 						<li>
-							<nuxt-link to="/about" :class="{ active: isExactPage('/about') }">{{ $t('header.about') }}</nuxt-link>
+							<clink to="/about" :class="{ active: isExactPage('/about') }">{{ $t('header.about') }}</clink>
 						</li>
 						<li>
-							<nuxt-link to="/contacts" :class="{ active: isExactPage('/contacts') }">{{ $t('header.contacts') }}</nuxt-link>
+							<clink to="/contacts" :class="{ active: isExactPage('/contacts') }">{{ $t('header.contacts') }}</clink>
 						</li>
 					</ul>
 				</nav>
 				<div class="header__middle mobile">
-					<nuxt-link to="/" class="header__logo" :class="{ active: searchBarShown }">
+					<clink to="/" class="header__logo" :class="{ active: searchBarShown }">
 						<img src="~/static/pics/svg/header/logo.svg">
-					</nuxt-link>
+					</clink>
 				</div>
 				<div class="header__right">
 					<div class="header__search" :class="{aside: langsShown}">
@@ -130,7 +130,7 @@ export default {
 		},
 
 		isExactPage(page) {
-			return this.$route.path.toLowerCase() == page || this.$route.path.toLowerCase() == page + this.$i18n.locale;
+			return this.$route.path.toLowerCase() == page || this.$route.path.toLowerCase() == page + this.$i18n.locale || this.$route.path.toLowerCase() == `/${this.$i18n.locale}${page}`;
 		},
 
 		showMobileMenu() {

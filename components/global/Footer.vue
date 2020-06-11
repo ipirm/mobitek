@@ -42,19 +42,19 @@
             <span class="title">{{ $t('footer.follow-us') }}</span>
             <ul>
               <li>
-                <a href="https://www.instagram.com/mobitek.az/" class="social">
+                <a href="https://www.instagram.com/mobitek.az/" class="social" target="_blank">
                   <img src="/pics/img/footer/ig.png" alt="Instagram">
                   <span>Instagram</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/mobitekaz-633079990499384" class="social">
+                <a href="https://www.facebook.com/mobitekaz-633079990499384" class="social" target="_blank">
                   <img src="/pics/img/footer/fb.png" alt="Facebook">
                   <span>Facebook</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.youtube.com/" class="social">
+                <a href="https://www.youtube.com/channel/UCRKa8kSU_RESveKfNNLpt5A" class="social" target="_blank">
                   <img src="/pics/img/footer/yt.png" alt="Youtube">
                   <span>Youtube</span>
                 </a>

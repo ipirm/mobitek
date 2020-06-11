@@ -1,7 +1,7 @@
 <template>
 	<div class="index-page__video-slider">
 		<div class="channel-button">
-			<a href="https://youtube.com">
+			<a href="https://www.youtube.com/channel/UCRKa8kSU_RESveKfNNLpt5A" target="_blank">
 				<img class="hover" src="~/static/pics/svg/index/youtube.svg" alt="Youtube: Mobitek TV">
 				<img class="no-hover" src="~/static/pics/svg/index/youtube-hover.svg" alt="Youtube: Mobitek TV">
 			</a>
@@ -98,7 +98,7 @@ export default {
 
 			let slides = this.$el.querySelectorAll('.index-page__video-slider__item'),
 					overlays = this.$el.querySelectorAll('.index-page__video-slider__item .overlay'),
-					i;	
+					i;
 
 			for (i = 0; i < slides.length; i++) {
 				if (i == this.mySwiper.activeIndex) {

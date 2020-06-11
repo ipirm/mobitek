@@ -7,7 +7,7 @@
 	},
 
 	"footer": {
-		"home": "Главная", 
+		"home": "Главная",
 		"information": "Информация",
 		"catalog": "Каталог",
 		"about-us": "О нас",
@@ -78,7 +78,10 @@
 		"add-to-cart": "ДОБАВИТЬ В КОРЗИНУ",
 		"buy-now": "КУПИ СЕЙЧАС",
 		"also-buy": "Вы также можете купить"
-	}
+	},
+	"MetaTitle": "Example | Text About Example",
+	"metaDescription": "about site text",
+	"keywords": "example,example1,example2"
 }
 
 

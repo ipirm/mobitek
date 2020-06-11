@@ -5,7 +5,6 @@
     "about": "Haqqımızda",
     "contacts": "Əlaqə"
   },
-
   "footer": {
     "home": "Əsas",
     "information": "İnformasiya",
@@ -28,7 +27,6 @@
       "send": "Göndər"
     }
   },
-
   "index": {
     "product-showcase": {
       "charger": "Şarj Cihazları",
@@ -39,36 +37,32 @@
       "home": "Ev üçün",
       "game": "Oyun"
     },
-
     "product-slider": {
       "see-more": "Daha çox"
     },
-
     "banners": {
       "how": {
-				"alt": "How does fast charging work?",
-				"title": "HOW DOES FAST CHARGING WORK?",
-				"text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
-			},
-			"apple": {
-				"alt": "What is Apple MFI License?",
-				"title": "What is Apple MFI License?",
-				"text": "Apple MFi certification is a license shown that Apple (Apple Inc.) has authorized accessory manufacturers to mark the MFi logo on their products. MFi is the abbreviation of Made for iPod, Made for iPhone, and Made for iPad. Apple allows manufacturers to print the MFi logo on the product package."
-			},
-			"smart": {
-				"alt": "Smart Home?-Yes,Please",
-				"title": "Smart Home?-Yes,Please",
-				"text": "'Smart home' denotes the use of technical systems, automated processes and connected, remote-controlled devices in apartments and houses. The main objective of the functions is to improve the quality of life and convenience in the home. Other goals are greater security and more efficient use of energy thanks to connected, remote-controllable devices."
+        "alt": "How does fast charging work?",
+        "title": "HOW DOES FAST CHARGING WORK?",
+        "text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
+      },
+      "apple": {
+        "alt": "What is Apple MFI License?",
+        "title": "What is Apple MFI License?",
+        "text": "Apple MFi certification is a license shown that Apple (Apple Inc.) has authorized accessory manufacturers to mark the MFi logo on their products. MFi is the abbreviation of Made for iPod, Made for iPhone, and Made for iPad. Apple allows manufacturers to print the MFi logo on the product package."
+      },
+      "smart": {
+        "alt": "Smart Home?-Yes,Please",
+        "title": "Smart Home?-Yes,Please",
+        "text": "'Smart home' denotes the use of technical systems, automated processes and connected, remote-controlled devices in apartments and houses. The main objective of the functions is to improve the quality of life and convenience in the home. Other goals are greater security and more efficient use of energy thanks to connected, remote-controllable devices."
       }
     },
-
     "bottom-features": {
       "fast-delivery": "Sürətli Çatdırılma",
       "high-quality": "Yüksək Keyfiyyət",
       "instant-reply": "Sürətli Müştəri Xidməti"
     }
   },
-
   "contacts": {
     "title": "Mağazalar",
     "locations": "Xəritədə bizim mağazalar",
@@ -77,12 +71,10 @@
       "see-address": "Adresi xəritədə göstər"
     }
   },
-
   "about": {
     "title": "Haqqımızda",
     "certificates": "Sertifikatlarımız"
   },
-
   "catalog": {
     "search-for-products": "Məhsullar üzrə axtarış",
     "enter-product-name": "Məhsulun adını daxil edin",
@@ -94,7 +86,6 @@
     "price": "Qiymət",
     "empty": "Nəticə yoxdur"
   },
-
   "product": {
     "fast-order": "Sürətli sifariş",
     "properties": "Məhsulun xarasteriktikası",
@@ -106,5 +97,8 @@
     "add-to-cart": "SƏBƏTƏ ƏLAVƏ ET",
     "buy-now": "İNDİ AL",
     "also-buy": "Həmçinin əldə edə bilərsiniz"
-  }
+  },
+  "MetaTitle": "Example | Text About Example",
+  "metaDescription": "about site text",
+  "keywords": "example,example1,example2"
 }

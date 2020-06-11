@@ -116,7 +116,23 @@ export default {
       await store.dispatch('getCatsProducts', store.state.product.cat_id)
     });
   },
-
+  head() {
+    return {
+      title: this.product.title[this.$i18n.locale],
+      meta: [
+        {property: 'og:title', content: `${this.product.title[this.$i18n.locale]}` || ''},
+        {
+          property: 'og:description',
+          content: `${this.product.description[this.$i18n.locale]}` || ''
+        },
+        {name: 'description', content: `${this.product.description[this.$i18n.locale]}` || ''},
+        {property: 'og:image', content: `https://mobitek.az/${JSON.parse(this.product.images)[0].url}` || ''},
+        {name: 'keywords', content: `${this.$t('keywords')}` || ''},
+        {property: 'og:url', content: `https://mobitek.az/${this.$route.fullPath}` || ''},
+        {property: 'twitter:card', content: `https://mobitek.az/${JSON.parse(this.product.images)[0].url}` || ''},
+      ]
+    }
+  },
   mounted() {
     this.rightSwiper.on('slideChange', () => {
       this.leftSwiper.slideTo(this.rightSwiper.activeIndex);

@@ -4,7 +4,7 @@
 		"catalog": "Catalog",
 		"about": "About us",
 		"contacts": "Contacts"
-	}, 
+	},
 
 	"footer": {
 		"home": "Information",
@@ -100,5 +100,8 @@
 		"add-to-cart": "ADD TO CART",
 		"buy-now": "BUY NOW",
 		"also-buy": "You can also buy"
-	}
+	},
+	"MetaTitle": "Example | Text About Example",
+	"metaDescription": "about site text",
+	"keywords": "example,example1,example2"
 }

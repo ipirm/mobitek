@@ -9,14 +9,14 @@
 			</button>
 		</div>
 		<span class="catalog-page__search__tip">{{ $t('catalog.example') }}</span>
-		<div class="catalog-page__search__autocomplete" v-show="showAutocomplete">
-			<div class="catalog-page__search__autocomplete__top-line"></div>
-			<div class="catalog-page__search__autocomplete__inner">
-				<clink class="catalog-page__search__autocomplete__item" v-for="(item, i) in results" :key="i" :to="item.link">
-					<span>{{ item.title }}</span>
-				</clink>
-			</div>
-		</div>
+<!--		<div class="catalog-page__search__autocomplete" v-show="showAutocomplete">-->
+<!--			<div class="catalog-page__search__autocomplete__top-line"></div>-->
+<!--			<div class="catalog-page__search__autocomplete__inner">-->
+<!--				<clink class="catalog-page__search__autocomplete__item" v-for="(item, i) in results" :key="i" :to="item.link">-->
+<!--					<span>{{ item.title }}</span>-->
+<!--				</clink>-->
+<!--			</div>-->
+<!--		</div>-->
 	</div>
 </template>
 

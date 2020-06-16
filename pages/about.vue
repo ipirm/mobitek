@@ -49,7 +49,20 @@ export default {
     await store.dispatch('getAbout');
     await store.dispatch('getCertificates');
   },
-
+  head() {
+    return {
+      title: `${this.$t('MetaTitle')}`,
+      meta: [
+        { name: 'description', content: `${this.$t('metaDescription')}` || '' },
+        { property: 'og:title', content: `${this.$t('MetaTitle')}` || '' } ,
+        { property: 'og:description', content: `${this.$t('metaDescription')}` || '' } ,
+        { property: 'og:image', content: '/seo/seo.jpg' || '' } ,
+        { property: 'og:url', content: `https://mobitek.az/${this.$route.fullPath}` || '' } ,
+        { property: 'twitter:card', content: '/seo/seo.jpg' || '' } ,
+        { name: 'keywords', content: `${this.$t('keywords')}` || '' },
+      ]
+    }
+  },
   components: {
     PageTitle
   },

@@ -101,14 +101,14 @@
 		"buy-now": "BUY NOW",
 		"also-buy": "You can also buy"
 	},
-	"MetaTitle": "Example | Text About Example",
-	"metaDescription": "about site text",
-	"keywords": "example,example1,example2",
+	"MetaTitle": "Mobitek.az | Accessories & Gadgets",
+    "metaDescription": "We proudly provide WHOLESALE and RETAIL sales of products such as Speakers, Headphones, Powerbanks and etc. with well made HIGH QUALITY at AFFORDABLE PRICES which belong to the well-known Brands from all over the World",
+    "keywords":"powerbank,powerbanks,adapter,charger,wireless,wirelesscharger,car,caraccesories,phone,smartphone,gadgets,home,game,videogame,videogames,wire,gaming,ps4,ps3,playstation,carcharger,adapters,case,cases,screenprotectors,screenprotector,cable,cables,speaker,speakers,JBL,marshall,,mobitek,mobitekaz,mobitekazerbaijan,mobitel,mi,powerology,mfi,apple,xiaomi,anker,ravpower,audio,headphone,earphone,headphones,devia,rock,joyroom",
 	"validate": {
-		"chosenColor": "Цвет не выбран",
-		"notAll": "Не все обязательные заполнены",
-		"success": "Ваша заявка принята",
-		"writeUs": "Спасибо за подписку",
-		"notWriteUs": "Мейл не может быть пустым en"
+		"chosenColor": "Colors are not selected",
+		"notAll": "Not all required sections filled",
+		"success": "Your application is accepted",
+		"writeUs": "Thanks for subscribe",
+		"notWriteUs": "Mail can't be empty"
 	}
 }

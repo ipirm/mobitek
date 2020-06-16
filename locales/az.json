@@ -42,18 +42,18 @@
     },
     "banners": {
       "how": {
-        "alt": "How does fast charging work?",
-        "title": "HOW DOES FAST CHARGING WORK?",
+        "alt": "Sürətli çatdırılma necə işləyir?",
+        "title": "Sürətli çatdırılma necə işləyir?",
         "text": "Quick Charge is a technology featured in Qualcomm Snapdragon SoCs, used in devices such as mobile phones, for managing power delivered over USB, mainly by communicating to the power supply and negotiating a voltage. It increases the voltage and thus charges batteries in devices faster than standard USB rates allow."
       },
       "apple": {
-        "alt": "What is Apple MFI License?",
-        "title": "What is Apple MFI License?",
+        "alt": "Apple MFI lisenziyası nədir?",
+        "title": "Apple MFI lisenziyası nədir?",
         "text": "Apple MFi certification is a license shown that Apple (Apple Inc.) has authorized accessory manufacturers to mark the MFi logo on their products. MFi is the abbreviation of Made for iPod, Made for iPhone, and Made for iPad. Apple allows manufacturers to print the MFi logo on the product package."
       },
       "smart": {
-        "alt": "Smart Home?-Yes,Please",
-        "title": "Smart Home?-Yes,Please",
+        "alt": "Ağıllı ev?-Bəli,zəhmət olmasa!",
+        "title": "Ağıllı ev?-Bəli,zəhmət olmasa!",
         "text": "'Smart home' denotes the use of technical systems, automated processes and connected, remote-controlled devices in apartments and houses. The main objective of the functions is to improve the quality of life and convenience in the home. Other goals are greater security and more efficient use of energy thanks to connected, remote-controllable devices."
       }
     },
@@ -98,14 +98,14 @@
     "buy-now": "İNDİ AL",
     "also-buy": "Həmçinin əldə edə bilərsiniz"
   },
-  "MetaTitle": "Example | Text About Example",
-  "metaDescription": "about site text",
-  "keywords": "example,example1,example2",
+   "MetaTitle": "Mobitek.az | Aksessuarlar & Qadjetlər",
+   "metaDescription": "Biz YÜKSƏK KEYFİYYƏTDƏ və hər cibə UYĞUN QİYMƏTDƏ, dünyaca məşhur Brendlərin aksessuar və gadjetlərinin TOPDAN və PƏRAKƏNDƏ satışını həyata keçiririk!",
+   "keywords": "powerbank,gücqurğusu,adapter,şarjcihazı,simsiz,simsizcihaz,avtomobil,telefon,smartfon,gadget,ev,oyun,videooyun,tel,oyun,ps4, ps3,playstation,maşınadapteri,mawinadapteri,adapterlər,keys,ekranqoruyucular,ekranqoruyucu,kabel,kabellər,dinamik,dinamiklər, JBL,marshall,mobitek,mobitekaz,mobitekazerbaijan,mobitel,mi,powerology,mfi,apple,xiaomi,anker,ravpower,audio,qulaqlıq,qulaqcıq,qulaqlıqlar,devia,rock,joyroom,şunur,shunur,wunur,mawinucun,mashinucun,nausnik,nauwnik,naushnik",
   "validate": {
-    "chosenColor": "Цвет не выбран",
-    "notAll": "Не все обязательные заполнены",
-    "success": "Ваша заявка принята",
-    "writeUs": "Спасибо за подписку",
-    "notWriteUs": "Мейл не может быть пустым"
+    "chosenColor": "Rəng seçilməyib",
+    "notAll": "Qeyd edilən bütün xanalar doldurulmayıb",
+    "success": "Müraciətiniz qeyd olundu",
+    "writeUs": "İzlədiyiniz üçün təşəkkürlər",
+    "notWriteUs": "Mail boş ola bilməz"
   }
 }

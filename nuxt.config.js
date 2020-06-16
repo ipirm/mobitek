@@ -89,7 +89,7 @@ export default {
         gzip: true,
         exclude: ["/secret", "/admin/**"]
     },
-    serverMiddleware: ['redirect-ssl'],
+  
     toast: {
         position: 'bottom-right',
         duration: 4000

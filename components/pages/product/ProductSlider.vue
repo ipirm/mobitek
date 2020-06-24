@@ -14,7 +14,7 @@
 						</div>
 						<div class="pic">
 							<img
-								:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
+								:src="`${$specImgUrl}${JSON.parse(product.images)[0].url}`"
 								:alt="`${JSON.parse(product.images)[0].image}`"
 							>
 						</div>

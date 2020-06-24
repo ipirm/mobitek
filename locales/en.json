@@ -73,7 +73,8 @@
 
 	"about": {
 		"title": "About Us",
-		"certificates": "Our Certificates"
+		"certificates": "Our Certificates",
+		"show": "Show"
 	},
 
 	"catalog": {

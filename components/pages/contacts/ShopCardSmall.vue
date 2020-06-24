@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="item">
 						<img src="/pics/img/contacts/map-pin.png" alt="location">
-						<a @click.stop :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`"><span>{{ data.address }}</span></a>
+						<a @click.stop target="_blank" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`"><span>{{ data.address }}</span></a>
 					</div>
 				</div>
 				<div class="row">
@@ -22,7 +22,7 @@
 						<a @click.stop class="phone" :href="`tel:${data.number ? data.number.replace('(', '').replace(')', '').replace(' ', '') : '/'}`"><span>{{ data.number }}</span></a>
 					</div>
 					<div class="item">
-						<a @click.stop class="see-on-map" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`">{{ $t('contacts.card.see-address') }}</a>
+						<a @click.stop target="_blank" class="see-on-map" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`">{{ $t('contacts.card.see-address') }}</a>
 					</div>
 				</div>
 			</div>

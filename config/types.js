@@ -1,1 +1,1 @@
-export const API_URI = "https://mobitek.az/api"
+export const API_URI = "https://admin.mobitek.az/api"

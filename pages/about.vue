@@ -6,7 +6,7 @@
         {{about.text[$i18n.locale]}}
       </p>
       <div class="about-page__pics container content">
-        <img v-for="(item,i) in JSON.parse(about.images)" :key="i" :class="[{'left': i === 0, 'right-top': i === 1,'right-bottom': i === 2}]" :src="`https://mobitek.az${item.url}`" :alt="item.url">
+        <img v-for="(item,i) in JSON.parse(about.images)" :key="i" :class="[{'left': i === 0, 'right-top': i === 1,'right-bottom': i === 2}]" :src="`${$specImgUrl}${item.url}`" :alt="item.url">
       </div>
       <div class="about-page__bottom-text">
         <p> {{about.quote[$i18n.locale]}}</p>

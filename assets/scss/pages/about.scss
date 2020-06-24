@@ -368,3 +368,35 @@
 		}
 	}
 }
+
+body.touch {
+	.about-page {
+		&__certificates {
+			&__item {
+				&__wrapper {
+					&:hover {
+						.about-page {
+							&__certificates {
+								&__item {
+									&__inner {
+										z-index: 0 !important;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&:hover {
+					.onhover {
+						opacity: 0 !important;
+					}
+
+					.about-page__certificates__show span {
+						opacity: 0 !important;
+					}
+				}
+			}
+		}
+	}
+}

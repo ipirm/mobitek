@@ -91,6 +91,11 @@
 				.see-on-map {
 					font-weight: 800;
 					color: #0B0F7C;
+					white-space: nowrap;
+
+					&.top {
+						display: none;
+					}
 				}
 
 				img {
@@ -161,6 +166,9 @@
 		}
 
 		&__bottom {
+			padding-left: 15px;
+			padding-right: 15px;
+
 			.details {
 				font-size: 19px;
 				line-height: 32px;
@@ -173,11 +181,22 @@
 
 			.row {
 				.item {
-					margin-right: 30px;
+					margin-right: 15px;
 					
 					a {
 						font-size: 14px;
 						line-height: 23px;
+					}
+
+					.see-on-map {
+						&.bottom {
+							display: none;
+						}
+
+						&.top {
+							display: block;
+							margin-left: 15px;
+						}
 					}
 				}
 

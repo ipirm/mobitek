@@ -21,13 +21,23 @@
 		&__bottom {
 			position: absolute;
 			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
+			left: 0;
 			display: flex;
 			justify-content: center;
 			align-items: flex-end;
 			z-index: 2;
 			width: 100%;
+			max-width: 100%;
+			overflow-x: auto;
+			scrollbar-width: none; /* Firefox */
+			scrollbar-height: none; /* Firefox */
+			-ms-overflow-style: none;  /* IE 10+ */
+
+			&::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+				background: transparent; /* make scrollbar transparent */
+			}
 
 			&__item {
 				white-space: nowrap;
@@ -39,9 +49,9 @@
 				font-size: 16px;
 				line-height: 19px;
 				color: white;
+				background: rgba(51, 51, 51, 0.65);
 				@include flex-center;
 				text-align: center;
-				background: rgba(51, 51, 51, 0.65);
 				margin-right: 10px;
 				cursor: pointer;
 				transition: height .2s ease;
@@ -672,6 +682,25 @@
 			margin-bottom: 60px;
 		}
 
+		&__welcome {
+			&__bottom {
+				justify-content: flex-start;
+				width: fit-content;
+				left: 50%;
+				transform: translateX(-50%);
+
+				&__item {
+					width: unset;
+
+					&--empty {
+						max-width: 20px;
+						min-width: 20px;
+						height: 1px;
+					}
+				}
+			}
+		}
+
 		&__video-slider {
 			padding: 0 100px;
 
@@ -872,12 +901,12 @@
 			&__bottom {
 				&__item {
 					width: 100%;
-					padding: 5px;
+					padding: 5px 20px;
 					height: unset;
 					transition: padding .2s ease;
 
-					&.active {
-						padding: 10px 5px;
+					&.active, &:hover {
+						padding: 10px 20px;
 						height: unset;
 					}
 
@@ -1019,6 +1048,44 @@
 
 			iframe {
 				height: 130px;
+			}
+		}
+	}
+}
+
+body.touch {
+	.index-page {
+		 &__welcome {
+		 	&__bottom {
+		 		&__item {
+		 			&:hover {
+		 				padding: 5px 20px !important;
+						color: white !important;
+						background: rgba(51, 51, 51, 0.65) !important;
+		 			}
+
+		 			&.active {
+		 				padding: 10px 20px !important;
+						color: #333333 !important;
+						background: rgba(255, 204, 0, 0.9) !important;
+		 			}
+		 		}
+		 	}
+		 }
+
+		&__video-slider {
+			.channel-button {
+				a {
+					&:hover {
+						.hover {
+							opacity: 1;
+						}
+
+						.no-hover {
+							opacity: 0;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -14,6 +14,7 @@
 					<div class="item">
 						<img src="/pics/img/contacts/phone.png" alt="phone">
 						<a @click.stop class="phone" :href="`tel:${data.number ? data.number.replace(' ', '').replace('(', '').replace(')', '') : '/'}`"><span>{{ data.number }}</span></a>
+						<a @click.stop target="_blank" class="see-on-map top" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`">{{ $t('contacts.card.see-address') }}</a>
 					</div>
 					<div class="item">
 						<img src="/pics/img/contacts/mail.png" alt="email">
@@ -23,10 +24,10 @@
 				<div class="row">
 					<div class="item">
 						<img src="/pics/img/contacts/map-pin.png" alt="location">
-						<a @click.stop :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`"><span>{{ data.address }}</span></a>
+						<a @click.stop target="_blank" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`"><span>{{ data.address }}</span></a>
 					</div>
 					<div class="item">
-						<a @click.stop class="see-on-map" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`">{{ $t('contacts.card.see-address') }}</a>
+						<a @click.stop target="_blank" class="see-on-map bottom" :href="`https://maps.google.com/?ll=${data.lat},${data.lng}&z=16`">{{ $t('contacts.card.see-address') }}</a>
 					</div>
 				</div>
 			</div>

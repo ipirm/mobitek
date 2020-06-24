@@ -4,7 +4,8 @@ export default {
     ** Headers of the page
     */
     env: {
-        imagesUrl: 'https://mobitek.az/storage' || 'http://localhost:3000'
+        imagesUrl: 'https://admin.mobitek.az/storage' || 'http://localhost:3000',
+        specImgUrl: 'https://admin.mobitek.az/' || 'http://localhost:3000'
     },
 
     head: {

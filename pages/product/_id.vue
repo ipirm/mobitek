@@ -9,7 +9,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" v-for="(item, i) in JSON.parse(product.images)" :key="i"
                                      @click="rightSwiper.slideTo(i)">
-                                    <img :src="`https://mobitek.az/${item.url}`">
+                                    <img :src="`${$specImgUrl}${item.url}`">
                                 </div>
                             </div>
                         </div>
@@ -18,7 +18,7 @@
                         <div v-swiper:rightSwiper="rightSwiperOption">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" v-for="(item, i) in JSON.parse(product.images)" :key="i">
-                                    <img :src="`https://mobitek.az/${item.url}`">
+                                    <img :src="`${$specImgUrl}${item.url}`">
                                 </div>
                             </div>
                         </div>

@@ -37,7 +37,7 @@
                   <img src="/pics/img/editors-choice.png" alt="Editor's choice">
                 </div>
                 <div class="pic">
-                  <img :src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`" :alt="product.title[$i18n.locale]">
+                  <img :src="`${$specImgUrl}${JSON.parse(product.images)[0].url}`" :alt="product.title[$i18n.locale]">
                 </div>
                 <div class="info">
                   <div class="top">
@@ -79,6 +79,7 @@ export default {
     ColorChooser,
     PriceRangeSlider
   },
+
   head() {
     return {
       title: `${this.$t('MetaTitle')}`,
@@ -93,11 +94,12 @@ export default {
       ]
     }
   },
+
   data() {
     return {
       searchInput: '',
 
-      mobileFiltersShown: false,
+      mobileFiltersShown: true,
 
       minPrice: 0,
       maxPrice: 500,
@@ -162,7 +164,9 @@ export default {
 
   mounted() {
     window.addEventListener('resize', this.onResize, false);
-    this.onResize();
+    setTimeout(() => {
+      this.onResize();
+    }, 1);
 
     this.chosenColors = new Array(this.colors.length).fill(false);
   	this.readURLQuery();

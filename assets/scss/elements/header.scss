@@ -422,3 +422,21 @@
 		}
 	}
 }
+
+@media (max-width: 365px) {
+	.header {
+		&__search {
+			&__wrapper, &__inner.active {
+				width: 250px;
+			}
+		}
+	}
+}
+
+body.touch {
+	.header {
+		.header__middle ul li a:hover {
+			color: white !important;
+		}
+	}
+}

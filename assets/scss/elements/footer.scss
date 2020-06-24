@@ -85,6 +85,7 @@
 				font-weight: 500;
 				color: #AAAAAA;
 				border: none;
+				border-radius: 0;
 			}
 
 			button {
@@ -263,6 +264,14 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+body.touch {
+	.footer {
+		a:hover {
+			opacity: 1 !important;
 		}
 	}
 }

@@ -52,7 +52,8 @@ export default {
       sectionSwiperOption: {
         allowTouchMove: false,
         observer: true,
-        observeParents: true
+        observeParents: true,
+        init: false
       },
 
       currentSlider: 1
@@ -60,7 +61,11 @@ export default {
   },
 
   mounted() {
-    this.sectionSwiper.slideTo(this.currentSlider);
+    this.sectionSwiper.on('init', () => {
+      this.sectionSwiper.slideTo(this.currentSlider);
+    });
+
+    this.sectionSwiper.init(this.sectionSwiperOption);
   },
 
   methods: {

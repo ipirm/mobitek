@@ -9,7 +9,7 @@
 						</div>
 						<div class="pic">
 							<img
-								:src="`https://mobitek.az/${JSON.parse(product.images)[0].url}`"
+								:src="`${$specImgUrl}${JSON.parse(product.images)[0].url}`"
 					    	:alt="`${JSON.parse(product.images)[0].image}`"
 							>
 						</div>
@@ -44,6 +44,7 @@ export default {
 				observer: true,
 				observeParents: true,
 				centeredSlides: true,
+				init: false,
 
 				breakpoints: {
 					1151: {
@@ -73,6 +74,12 @@ export default {
 	},
 
 	mounted() {
+		this.productSwiper.on('init', () => {
+      this.productSwiper.slideTo(1);
+    });
+
+    this.productSwiper.init(this.productSwiperOption);
+
 		this.$bus.$on('product-slide', data => {
 			if (data.index == this.index) {
 				if (data.left)

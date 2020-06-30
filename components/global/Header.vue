@@ -9,7 +9,7 @@
 				</div>
 				<div class="header__mobile__bg" :class="{active: mobileMenuBgActive, visible: mobileMenuBgVisible}" @click="hideMobileMenu()"></div>
 				<div class="header__left mobile">
-					<button class="header__left__mobile__menu__button" @click="showMobileMenu()">
+					<button class="header__mobile__menu__button" @click="showMobileMenu()">
 						<img src="/pics/img/header/mobile-menu-button.png">
 					</button>
 					<div class="header__mobile__menu" :class="{active: mobileMenuShown}">
@@ -22,10 +22,10 @@
 									<img src="/pics/img/header/cart.png">
 								</button>
 								<div class="header__langs">
-									<button class="header__langs__button">
+									<button class="header__langs__button" @click="toggleLangs()">
 										<img alt="Languages" src="/pics/img/header/langs.png">
 									</button>
-									<div class="header__langs__outer">
+									<div class="header__langs__outer" v-show="langsOuterShown">
 										<div class="header__langs__inner" :class="{active: langsShown}">
 											<div class="header__langs__wrapper">
 												<button class="header__langs__item" @click="chooseLang('ru')">RU</button>
@@ -84,7 +84,7 @@
 						<button class="header__search__button" @click="search()">
 							<img alt="Search" src="/pics/img/header/search.png">
 						</button>
-						<div class="header__search__outer">
+						<div class="header__search__outer" v-show="searchOuterShown">
 							<div class="header__search__inner" :class="{active: searchBarShown}">
 								<div class="header__search__wrapper">
 									<input type="text" name="search" v-model="searchInput" @keydown.enter="search()">
@@ -96,7 +96,7 @@
 						<button class="header__cart__button" @click="toggleCart()">
 							<img alt="Search" src="/pics/img/header/cart.png">
 						</button>
-						<div class="header__cart__outer" :class="{active: cartShown}">
+						<div class="header__cart__outer" :class="{active: cartShown}" v-show="cartOuterShown">
 							<div class="header__cart__inner">
 								<div class="header__cart__wrapper">
 									<h3 class="header__cart__title">{{ $t('cart.title') }}</h3>
@@ -134,10 +134,10 @@
 						</div>
 					</div>
 					<div class="header__langs desktop-500">
-						<button class="header__langs__button" @click="langsShown = !langsShown">
+						<button class="header__langs__button" @click="toggleLangs()">
 							<img alt="Languages" src="/pics/img/header/langs.png">
 						</button>
-						<div class="header__langs__outer">
+						<div class="header__langs__outer" v-show="langsOuterShown">
 							<div class="header__langs__inner" :class="{active: langsShown}">
 								<div class="header__langs__wrapper">
 									<button class="header__langs__item" @click="chooseLang('ru')">RU</button>
@@ -160,8 +160,11 @@ export default {
 	data() {
 		return {
 			searchBarShown: false,
+			searchOuterShown: false,
 			langsShown: false,
+			langsOuterShown: false,
 			cartShown: false,
+			cartOuterShown: false,
 			transparent: false,
 			mobileMenuShown: false,
 			mobileMenuBgActive: false,
@@ -256,16 +259,6 @@ export default {
 			onCloser(e);
 		});
 
-		if (this.$bus.isMobile) {
-			document.querySelector('.header__mobile__menu__logo__side .header__langs__button').addEventListener('touchstart', e => {
-				this.langsShown = !this.langsShown;
-			});
-		} else {
-			document.querySelector('.header__mobile__menu__logo__side .header__langs__button').addEventListener('click', e => {
-				this.langsShown = !this.langsShown;
-			});
-		}
-
 		window.addEventListener('mousemove', onMouseMove, false);
 		window.addEventListener('touchmove', onMouseMove, false);
 		window.addEventListener('mouseup', onMouseUp, false);
@@ -285,12 +278,31 @@ export default {
 					this.$router.push(`/catalog?title=${this.searchInput}`);
 				else this.$bus.$emit('search', this.searchInput);
 			}
-			this.searchBarShown = !this.searchBarShown;
-			this.searchInput = '';
+			if (!this.searchBarShown) {
+				this.searchOuterShown = true;
+				setTimeout(() => { this.searchBarShown = true; }, 1);
+			} else {
+				this.searchBarShown = false;
+				setTimeout(() => {
+					if (!this.searchBarShown) {
+						this.searchOuterShown = false;
+						this.searchInput = '';
+					}
+				}, 300);
+			}
 		},
 
 		toggleCart() {
-			this.cartShown = !this.cartShown;
+			if (!this.cartShown) {
+				this.cartOuterShown = true;
+				setTimeout(() => { this.cartShown = true; }, 1);
+			} else {
+				this.cartShown = false;
+				setTimeout(() => {
+					if (!this.cartShown)
+						this.cartOuterShown = false;
+				}, 300);
+			}
 		},
 
 		increaseAmount(i) {
@@ -308,10 +320,23 @@ export default {
 		},
 
 		chooseLang(lang) {
-			this.langsShown = false;
+			this.toggleLangs();
 			setTimeout(() => {
 				this.$router.push(this.switchLocalePath(lang));
 			}, 200);
+		},
+
+		toggleLangs() {
+			if (!this.langsShown) {
+				this.langsOuterShown = true;
+				setTimeout(() => { this.langsShown = true; }, 1);
+			} else {
+				this.langsShown = false;
+				setTimeout(() => {
+					if (!this.langsShown)
+						this.langsOuterShown = false;
+				}, 300);
+			}
 		},
 
 		isExactPage(page) {
